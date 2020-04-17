@@ -81,7 +81,7 @@
     [m_array addObject:view_1_2];
     [m_array addObject:view_1_3];
 
-    [self.groupView addRightTopSonView:m_array];
+    [self.groupView addRightTopPendantView:m_array];
 
 }
 
@@ -123,7 +123,7 @@
        [m_array addObject:view_1_2];
        [m_array addObject:view_1_3];
 
-       [self.groupView addRightBottomSonView:m_array];
+       [self.groupView addRightBottomPendantView:m_array];
 
 }
 
@@ -221,18 +221,18 @@
 
 
        [m_set addObject:view_1_1];
+    [m_set addObject:view_1_3];
        [m_set addObject:view_1_2];
-       [m_set addObject:view_1_3];
+    [m_set addObject:view_2_2];
        [m_set addObject:view_2_1];
-       [m_set addObject:view_2_2];
-    [m_set addObject:view_3_2];
+//    [m_set addObject:view_3_2];
+    [m_set addObject:view_4_1];
        [m_set addObject:view_3_1];
-       [m_set addObject:view_4_1];
 
 
 
 
-       [self.groupView addALLSonView:[m_set copy]];
+       [self.groupView addLeftTopPendantView:m_set];
 
 }
 

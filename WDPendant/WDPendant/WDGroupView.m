@@ -31,6 +31,7 @@
 - (void)setupView {
 
     // 布局
+
 }
 
 - (void)updateleftTopAllLayoutView {
@@ -83,25 +84,61 @@
     [self layoutIfNeeded];
 }
 
-- (void)addsonView:(WDBaseView *)sonView {
+- (void)addPendantView:(WDBaseView *)pendantView {
 
-    [self.leftTopSonViewArray addObject:sonView];
-    [self updateleftTopAllLayoutView];
+//    [self.leftTopSonViewArray addObject:pendantView];
+//    [self updateleftTopAllLayoutView];
 }
 
 
-- (void)addALLSonView:(NSMutableArray<WDBaseView *> *)set {
+- (void)addLeftTopPendantView:(NSMutableArray<WDBaseView *> *)pendantViewArray {
 
-    [self.leftTopSonViewArray addObjectsFromArray:set];
+
+
+    [self.leftTopSonViewArray addObjectsFromArray:[self sortArray:pendantViewArray]];
+
     [self updateleftTopAllLayoutView];
+
+}
+
+- (NSArray *)sortArray:(NSArray *)array {
+
+//    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"levelWeight" ascending:YES];
+//    NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"verticalWeight" ascending:YES];
+
+//    NSArray *tempArray = [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+//        WDBaseView *view1 = (WDBaseView *)obj1;
+//        WDBaseView *view2 = (WDBaseView *)obj2;
+//        if (view1.levelWeight > view2.levelWeight) {
+//            return [obj1 compare:obj2];
+//        }
+//
+//    }];
+
+//    return  tempArray;
+
+    NSComparator cmptr = ^(WDBaseView *obj1, WDBaseView *obj2){
+        if (obj1.levelWeight > obj2.levelWeight) {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+
+//        if (obj1.levelWeight < obj2.levelWeight) {
+//            return (NSComparisonResult)NSOrderedAscending;
+//        }
+        return (NSComparisonResult)NSOrderedSame;
+    };
+    NSArray *sorArray = [array sortedArrayUsingComparator:cmptr];
+
+    return sorArray;
 
 }
 
 
 
-- (void)addRightBottomSonView:(NSMutableArray<WDBaseView *> *)sonViewArray {
 
-    [self.rightBottomSonViewArray addObjectsFromArray:sonViewArray];
+- (void)addRightBottomPendantView:(NSMutableArray<WDBaseView *> *)pendantViewArray {
+
+    [self.rightBottomSonViewArray addObjectsFromArray:pendantViewArray];
     [self updateRightBottomAllLayoutView];
 
 }
@@ -157,9 +194,9 @@
 }
 
 
-- (void)addRightTopSonView:(NSMutableArray<WDBaseView *> *)sonViewArray {
+- (void)addRightTopPendantView:(NSMutableArray<WDBaseView *> *)pendantViewArray {
 
-    [self.rightTopSonViewArray addObjectsFromArray:sonViewArray];
+    [self.rightTopSonViewArray addObjectsFromArray:pendantViewArray];
     [self updateRightTopAllLayoutView];
 }
 
@@ -212,8 +249,6 @@
         [self updateConstraintsIfNeeded];
         [self layoutIfNeeded];
 
-
-
 }
 
 
@@ -240,32 +275,4 @@
     return _rightTopSonViewArray;
 }
 
-
 @end
-
-
-
-
-//    self.itemArray = itemArray;
-//    CGFloat manager = (width - K_num * K_itemBtn_w)/(K_num - 1);
-//    // 布局
-//    for (int i = 0; i < itemArray.count; i++) {
-//        YXLiveNearSelectItemListModel *model = [itemArray yxt_unknownObjectAtIndex:i];
-//        UIButton *itemBtn = [self creatItemButtonTitle:model.itemName];
-//        itemBtn.tag = model.itemID;
-//        [itemBtn addTarget:self action:@selector(itemBtnDidClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [self addSubview:itemBtn];
-//        NSInteger row = i / K_num; // 行
-//        NSInteger low = i % K_num; // 列
-//        CGFloat top_m = row * (K_itemBtn_h + K_itemBtn_m);
-//        CGFloat left_m = low * (K_itemBtn_w + manager);
-//        [itemBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(self).offset(top_m);
-//            make.left.equalTo(self).offset(left_m);
-//            make.width.mas_equalTo(K_itemBtn_w);
-//            make.height.mas_equalTo(K_itemBtn_h);
-//        }];
-//        [self.allItemArray addObject:itemBtn];
-//    }
-
-

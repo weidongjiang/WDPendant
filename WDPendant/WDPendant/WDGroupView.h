@@ -14,13 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WDGroupView : UIView
 
 
-- (void)addsonView:(WDBaseView *)sonView;
+- (void)addPendantView:(WDBaseView *)pendantView;
 
-- (void)addALLSonView:(NSMutableArray<WDBaseView *> *)set;
+- (void)addLeftTopPendantView:(NSMutableArray<WDBaseView *> *)pendantViewArray;
 
-- (void)addRightBottomSonView:(NSMutableArray<WDBaseView *> *)sonViewArray;
+- (void)addRightBottomPendantView:(NSMutableArray<WDBaseView *> *)pendantViewArray;
 
-- (void)addRightTopSonView:(NSMutableArray<WDBaseView *> *)sonViewArray;
+- (void)addRightTopPendantView:(NSMutableArray<WDBaseView *> *)pendantViewArray;
 
 @end
 

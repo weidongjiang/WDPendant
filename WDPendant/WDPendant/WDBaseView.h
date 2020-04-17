@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger,WDBaseViewBenchmarkType) {
 @interface WDBaseView : UIView
 
 @property (nonatomic, assign) WDBaseViewBenchmarkType         benchmarkType; ///< 从哪一个基准点开始
+@property (nonatomic, assign) CGFloat         pendantViewID; ///< 挂件View 唯一标识ID
 @property (nonatomic, assign) CGFloat         levelWeight; ///< 水平权重  同一行 水平的排序 位置
 @property (nonatomic, assign) CGFloat         verticalWeight; ///< 竖直权重 在第几行的排序
 @property (nonatomic, assign) CGFloat         levelMager; ///< 与上一个View的水平方向的间距
