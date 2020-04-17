@@ -11,10 +11,8 @@
 
 @interface WDGroupView ()
 
-@property (nonatomic, strong) NSArray        *leftTopSonViewSet; ///< <#value#>
+@property (nonatomic, strong) NSMutableArray<WDBaseView *>         *leftTopSonViewArray; ///< <#value#>
 
-@property (nonatomic, strong) NSMutableArray<WDBaseView *>         *sonViewSet; ///< <#value#>
-@property (nonatomic, strong) WDBaseView   *upObjView; ///< <#value#>
 @end
 
 
@@ -33,21 +31,19 @@
     // 布局
 }
 
-- (void)updateAllLayoutView {
+- (void)updateleftTopAllLayoutView {
 
 
     CGFloat x = 0;
-
     CGFloat y = 0;
 
-    CGFloat levelWeight = 1;
+//    CGFloat levelWeight = 1;
     CGFloat verticalWeight = 1;
-
     CGFloat upHeight = 0;
 
-    for (int i = 0; i < self.sonViewSet.count; i++) {
+    for (int i = 0; i < self.leftTopSonViewArray.count; i++) {
 
-        WDBaseView *objView = self.sonViewSet[i];
+        WDBaseView *objView = self.leftTopSonViewArray[i];
         [self addSubview:objView];
 
         CGFloat width = objView.width;
@@ -55,12 +51,12 @@
         CGFloat levelMager = objView.levelMager;
         CGFloat verticalMager = objView.verticalMager;
 
-        CGFloat _levelWeight = objView.levelWeight;
+//        CGFloat _levelWeight = objView.levelWeight;
         CGFloat _verticalWeight = objView.verticalWeight;
 
-        if (_verticalWeight > verticalWeight) { // 控制行号
-            verticalWeight = _verticalWeight;
+        if (_verticalWeight > verticalWeight) { // 控制行号 到下一行
             y = y + verticalMager + upHeight;
+            verticalWeight = _verticalWeight;
             x = 0;
         }
 
@@ -70,12 +66,14 @@
             make.width.mas_equalTo(width);
             make.height.mas_equalTo(height);
         }];
-        upHeight = height;
+
+        if (height > upHeight) {// 更新y方向的高度
+            upHeight = height;
+        }
 
         if (_verticalWeight == verticalWeight) {// 同一行
             x = x + levelMager + width;
         }
-
     }
 
     [self setNeedsUpdateConstraints];
@@ -85,25 +83,28 @@
 
 - (void)addsonView:(WDBaseView *)sonView {
 
-    [self.sonViewSet addObject:sonView];
-    [self updateAllLayoutView];
+    [self.leftTopSonViewArray addObject:sonView];
+    [self updateleftTopAllLayoutView];
 }
 
 
 - (void)addALLSonView:(NSMutableArray<WDBaseView *> *)set {
 
 
-    [self.sonViewSet addObjectsFromArray:set];
-    [self updateAllLayoutView];
+    [self.leftTopSonViewArray addObjectsFromArray:set];
+
+
+    [self updateleftTopAllLayoutView];
 
 }
 
 
-- (NSMutableArray<WDBaseView *> *)sonViewSet {
-    if (!_sonViewSet) {
-        _sonViewSet = [[NSMutableArray alloc] init];
+
+- (NSMutableArray<WDBaseView *> *)leftTopSonViewArray {
+    if (!_leftTopSonViewArray) {
+        _leftTopSonViewArray = [[NSMutableArray alloc] init];
     }
-    return _sonViewSet;
+    return _leftTopSonViewArray;
 }
 
 @end

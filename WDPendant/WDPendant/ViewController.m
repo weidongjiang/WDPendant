@@ -120,7 +120,7 @@
     view_4_1.levelMager = 10;
     view_4_1.verticalMager = 10;
     view_4_1.width = 200;
-    view_4_1.height = 200;
+    view_4_1.height = 20;
 
 
     [m_set addObject:view_1_1];
