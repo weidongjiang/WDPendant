@@ -12,6 +12,8 @@
 @interface WDGroupView ()
 
 @property (nonatomic, strong) NSMutableArray<WDBaseView *>         *leftTopSonViewArray; ///< <#value#>
+@property (nonatomic, strong) NSMutableArray<WDBaseView *>         *rightBottomSonViewArray; ///< <#value#>
+@property (nonatomic, strong) NSMutableArray<WDBaseView *>         *rightTopSonViewArray; ///< <#value#>
 
 @end
 
@@ -90,13 +92,130 @@
 
 - (void)addALLSonView:(NSMutableArray<WDBaseView *> *)set {
 
-
     [self.leftTopSonViewArray addObjectsFromArray:set];
-
-
     [self updateleftTopAllLayoutView];
 
 }
+
+
+
+- (void)addRightBottomSonView:(NSMutableArray<WDBaseView *> *)sonViewArray {
+
+    [self.rightBottomSonViewArray addObjectsFromArray:sonViewArray];
+    [self updateRightBottomAllLayoutView];
+
+}
+
+- (void)updateRightBottomAllLayoutView {
+
+    CGFloat x = 0;
+        CGFloat y = 0;
+
+    //    CGFloat levelWeight = 1;
+        CGFloat verticalWeight = 1;
+        CGFloat upHeight = 0;
+
+        for (int i = 0; i < self.rightBottomSonViewArray.count; i++) {
+
+            WDBaseView *objView = self.rightBottomSonViewArray[i];
+            [self addSubview:objView];
+
+            CGFloat width = objView.width;
+            CGFloat height = objView.height;
+            CGFloat levelMager = objView.levelMager;
+            CGFloat verticalMager = objView.verticalMager;
+
+    //        CGFloat _levelWeight = objView.levelWeight;
+            CGFloat _verticalWeight = objView.verticalWeight;
+
+            if (_verticalWeight > verticalWeight) { // 控制行号 到下一行
+                y = y + verticalMager + upHeight;
+                verticalWeight = _verticalWeight;
+                x = 0;
+            }
+
+            [objView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.equalTo(self).offset(-x);
+                make.bottom.equalTo(self).offset(-y);
+                make.width.mas_equalTo(width);
+                make.height.mas_equalTo(height);
+            }];
+
+            if (height > upHeight) {// 更新y方向的高度
+                upHeight = height;
+            }
+
+            if (_verticalWeight == verticalWeight) {// 同一行
+                x = x + levelMager + width;
+            }
+        }
+
+        [self setNeedsUpdateConstraints];
+        [self updateConstraintsIfNeeded];
+        [self layoutIfNeeded];
+
+}
+
+
+- (void)addRightTopSonView:(NSMutableArray<WDBaseView *> *)sonViewArray {
+
+    [self.rightTopSonViewArray addObjectsFromArray:sonViewArray];
+    [self updateRightTopAllLayoutView];
+}
+
+- (void)updateRightTopAllLayoutView {
+
+
+    CGFloat x = 0;
+        CGFloat y = 0;
+
+    //    CGFloat levelWeight = 1;
+        CGFloat verticalWeight = 1;
+        CGFloat upHeight = 0;
+
+        for (int i = 0; i < self.rightTopSonViewArray.count; i++) {
+
+            WDBaseView *objView = self.rightTopSonViewArray[i];
+            [self addSubview:objView];
+
+            CGFloat width = objView.width;
+            CGFloat height = objView.height;
+            CGFloat levelMager = objView.levelMager;
+            CGFloat verticalMager = objView.verticalMager;
+
+    //        CGFloat _levelWeight = objView.levelWeight;
+            CGFloat _verticalWeight = objView.verticalWeight;
+
+            if (_verticalWeight > verticalWeight) { // 控制行号 到下一行
+                y = y + verticalMager + upHeight;
+                verticalWeight = _verticalWeight;
+                x = 0;
+            }
+
+            [objView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.equalTo(self).offset(-x);
+                make.top.equalTo(self).offset(y);
+                make.width.mas_equalTo(width);
+                make.height.mas_equalTo(height);
+            }];
+
+            if (height > upHeight) {// 更新y方向的高度
+                upHeight = height;
+            }
+
+            if (_verticalWeight == verticalWeight) {// 同一行
+                x = x + levelMager + width;
+            }
+        }
+
+        [self setNeedsUpdateConstraints];
+        [self updateConstraintsIfNeeded];
+        [self layoutIfNeeded];
+
+
+
+}
+
 
 
 
@@ -106,6 +225,21 @@
     }
     return _leftTopSonViewArray;
 }
+
+- (NSMutableArray<WDBaseView *> *)rightBottomSonViewArray {
+    if (!_rightBottomSonViewArray) {
+        _rightBottomSonViewArray = [[NSMutableArray alloc] init];
+    }
+    return _rightBottomSonViewArray;
+}
+
+- (NSMutableArray<WDBaseView *> *)rightTopSonViewArray {
+    if (!_rightTopSonViewArray) {
+        _rightTopSonViewArray = [[NSMutableArray alloc] init];
+    }
+    return _rightTopSonViewArray;
+}
+
 
 @end
 

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger,WDBaseViewBenchmarkType) {
     WDBaseViewBenchmarkTypeLeftTop = 1, // 左上
     WDBaseViewBenchmarkTypeRightTop = 2, // 右上
-    WDBaseViewBenchmarkTypeRightBottim = 3, // 右下
+    WDBaseViewBenchmarkTypeRightBottom = 3, // 右下
 };
 
 @interface WDBaseView : UIView

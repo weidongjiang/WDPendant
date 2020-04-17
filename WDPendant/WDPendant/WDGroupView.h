@@ -18,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addALLSonView:(NSMutableArray<WDBaseView *> *)set;
 
+- (void)addRightBottomSonView:(NSMutableArray<WDBaseView *> *)sonViewArray;
+
+- (void)addRightTopSonView:(NSMutableArray<WDBaseView *> *)sonViewArray;
+
 @end
 
 NS_ASSUME_NONNULL_END
