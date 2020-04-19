@@ -101,44 +101,11 @@
 
 }
 
-- (NSArray *)sortArray:(NSArray *)array {
-
-//    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"levelWeight" ascending:YES];
-//    NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"verticalWeight" ascending:YES];
-
-//    NSArray *tempArray = [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-//        WDBaseView *view1 = (WDBaseView *)obj1;
-//        WDBaseView *view2 = (WDBaseView *)obj2;
-//        if (view1.levelWeight > view2.levelWeight) {
-//            return [obj1 compare:obj2];
-//        }
-//
-//    }];
-
-//    return  tempArray;
-
-    NSComparator cmptr = ^(WDBaseView *obj1, WDBaseView *obj2){
-        if (obj1.levelWeight > obj2.levelWeight) {
-            return (NSComparisonResult)NSOrderedDescending;
-        }
-
-//        if (obj1.levelWeight < obj2.levelWeight) {
-//            return (NSComparisonResult)NSOrderedAscending;
-//        }
-        return (NSComparisonResult)NSOrderedSame;
-    };
-    NSArray *sorArray = [array sortedArrayUsingComparator:cmptr];
-
-    return sorArray;
-
-}
-
-
 
 
 - (void)addRightBottomPendantView:(NSMutableArray<WDBaseView *> *)pendantViewArray {
 
-    [self.rightBottomSonViewArray addObjectsFromArray:pendantViewArray];
+    [self.rightBottomSonViewArray addObjectsFromArray:[self sortArray:pendantViewArray]];
     [self updateRightBottomAllLayoutView];
 
 }
@@ -196,7 +163,7 @@
 
 - (void)addRightTopPendantView:(NSMutableArray<WDBaseView *> *)pendantViewArray {
 
-    [self.rightTopSonViewArray addObjectsFromArray:pendantViewArray];
+    [self.rightTopSonViewArray addObjectsFromArray:[self sortArray:pendantViewArray]];
     [self updateRightTopAllLayoutView];
 }
 
@@ -249,6 +216,28 @@
         [self updateConstraintsIfNeeded];
         [self layoutIfNeeded];
 
+}
+
+
+- (NSArray *)sortArray:(NSArray *)array {
+
+    NSArray *sorArray = [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [self comparePendantView:obj1 pendantObj2:obj2];
+    }];
+    return sorArray;
+
+}
+
+-(NSComparisonResult)comparePendantView:(WDBaseView *)pendantObj1 pendantObj2:(WDBaseView *)pendantObj2 {
+ 
+    // 竖直方向的确定是哪一行
+    NSComparisonResult result = [[NSNumber numberWithInt:pendantObj1.verticalWeight] compare:[NSNumber numberWithInt:pendantObj2.verticalWeight]];
+    //如果是同一行，确定每一行的顺序]
+     if (result == NSOrderedSame) {
+         result = [[NSNumber numberWithInt:pendantObj1.levelWeight] compare:[NSNumber numberWithInt:pendantObj2.levelWeight]];
+     }
+
+     return result;
 }
 
 

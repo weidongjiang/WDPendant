@@ -78,8 +78,8 @@
 
     NSMutableArray *m_array = [NSMutableArray array];
     [m_array addObject:view_1_1];
-    [m_array addObject:view_1_2];
     [m_array addObject:view_1_3];
+    [m_array addObject:view_1_2];
 
     [self.groupView addRightTopPendantView:m_array];
 
@@ -119,8 +119,8 @@
        view_1_3.height = 50;
 
        NSMutableArray *m_array = [NSMutableArray array];
+    [m_array addObject:view_1_2];
        [m_array addObject:view_1_1];
-       [m_array addObject:view_1_2];
        [m_array addObject:view_1_3];
 
        [self.groupView addRightBottomPendantView:m_array];
@@ -179,7 +179,7 @@
        WDBaseView *view_2_2 = [[WDBaseView alloc] init];
        view_2_2.backgroundColor = [UIColor redColor];
        view_2_2.benchmarkType = WDBaseViewBenchmarkTypeLeftTop;
-       view_2_2.levelWeight = 1;
+       view_2_2.levelWeight = 2;
        view_2_2.verticalWeight = 2;
        view_2_2.levelMager = 10;
        view_2_2.verticalMager = 10;
@@ -200,7 +200,7 @@
        WDBaseView *view_3_2 = [[WDBaseView alloc] init];
        view_3_2.backgroundColor = [UIColor yellowColor];
        view_3_2.benchmarkType = WDBaseViewBenchmarkTypeLeftTop;
-       view_3_2.levelWeight = 1;
+       view_3_2.levelWeight = 2;
        view_3_2.verticalWeight = 3;
        view_3_2.levelMager = 10;
        view_3_2.verticalMager = 10;
@@ -225,7 +225,7 @@
        [m_set addObject:view_1_2];
     [m_set addObject:view_2_2];
        [m_set addObject:view_2_1];
-//    [m_set addObject:view_3_2];
+    [m_set addObject:view_3_2];
     [m_set addObject:view_4_1];
        [m_set addObject:view_3_1];
 
