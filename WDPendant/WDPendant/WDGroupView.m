@@ -43,6 +43,7 @@
 //    CGFloat levelWeight = 1;
     CGFloat verticalWeight = 1;
     CGFloat upHeight = 0;
+    NSInteger lineMum = 0;
 
     for (int i = 0; i < self.leftTopSonViewArray.count; i++) {
 
@@ -61,6 +62,9 @@
             y = y + verticalMager + upHeight;
             verticalWeight = _verticalWeight;
             x = 0;
+            lineMum = 1;
+        }else if (_verticalWeight == verticalWeight) {
+            lineMum++;
         }
 
         [objView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -70,7 +74,11 @@
             make.height.mas_equalTo(height);
         }];
 
-        if (height > upHeight) {// 更新y方向的高度
+        if (lineMum > 1) {// 更新y方向的高度,有两个以上
+            if (height > upHeight) {
+                upHeight = height;
+            }
+        }else {// 每一行只有一个View
             upHeight = height;
         }
 
@@ -145,12 +153,13 @@
                 make.height.mas_equalTo(height);
             }];
 
-            if (height > upHeight) {// 更新y方向的高度
-                upHeight = height;
-            }
 
             if (_verticalWeight == verticalWeight) {// 同一行
                 x = x + levelMager + width;
+//                if (height > upHeight) {// 更新y方向的高度 获取同一行的最高高度
+                    upHeight = height;
+
+//                }
             }
         }
 
@@ -203,12 +212,12 @@
                 make.height.mas_equalTo(height);
             }];
 
-            if (height > upHeight) {// 更新y方向的高度
-                upHeight = height;
-            }
+//            if (height > upHeight) {// 更新y方向的高度
+//            }
 
             if (_verticalWeight == verticalWeight) {// 同一行
                 x = x + levelMager + width;
+                upHeight = height;
             }
         }
 

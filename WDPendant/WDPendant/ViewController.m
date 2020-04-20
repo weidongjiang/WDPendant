@@ -38,7 +38,7 @@
 
     [self rightBottom];
 
-    [self rightTop];
+//    [self rightTop];
 
 
 }
@@ -105,8 +105,8 @@
        view_1_2.verticalWeight = 2;
        view_1_2.levelMager = 10;
        view_1_2.verticalMager = 10;
-       view_1_2.width = 100;
-       view_1_2.height = 200;
+       view_1_2.width = 80;
+       view_1_2.height = 80;
 
        WDBaseView *view_1_3 = [[WDBaseView alloc] init];
        view_1_3.backgroundColor = [UIColor greenColor];
