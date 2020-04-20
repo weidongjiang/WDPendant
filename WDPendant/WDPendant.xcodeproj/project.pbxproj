@@ -71,6 +71,7 @@
 		CE9605FC24498112004A3596 /* WDBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDBaseView.m; sourceTree = "<group>"; };
 		CE9605FE24498422004A3596 /* WDGroupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDGroupView.h; sourceTree = "<group>"; };
 		CE9605FF24498422004A3596 /* WDGroupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDGroupView.m; sourceTree = "<group>"; };
+		CEE7205B244DB4D00077DA62 /* WDPendantLayoutProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDPendantLayoutProtocol.h; sourceTree = "<group>"; };
 		FF2E84540927C6D8CBCB4667 /* Pods-WDPendantTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDPendantTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WDPendantTests/Pods-WDPendantTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +162,7 @@
 				CE9605FC24498112004A3596 /* WDBaseView.m */,
 				CE9605FE24498422004A3596 /* WDGroupView.h */,
 				CE9605FF24498422004A3596 /* WDGroupView.m */,
+				CEE7205B244DB4D00077DA62 /* WDPendantLayoutProtocol.h */,
 				CE9605D224497CEA004A3596 /* Assets.xcassets */,
 				CE9605D424497CEA004A3596 /* LaunchScreen.storyboard */,
 				CE9605D724497CEA004A3596 /* Info.plist */,

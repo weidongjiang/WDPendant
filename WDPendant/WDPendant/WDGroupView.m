@@ -66,10 +66,15 @@
 
         // 删除View 和 临时数组
         [self removeFromSuperviewAndPendantItemArray:self.rightBottomPendantItemArray];
-
         [self updateLayoutPendantViewArray:[self sortArray:self.rightBottomPendantArray]];
+
+//        [self.rightBottomPendantItemArray enumerateObjectsUsingBlock:^(WDBaseView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            NSAssert(![@(obj.pendantViewID).stringValue isEqualToString:@(pendantView.pendantViewID).stringValue], @"跟别人的ID 重了(%f %f)....换个吧 ",obj.pendantViewID,pendantView.pendantViewID);
+//        }];
     }
 }
+
+//- (void)checkPendantViewID:(NSMutableArray *)pendantItemArray
 
 - (void)removePendantView:(WDBaseView *)pendantView {
     if (pendantView.benchmarkType == WDBaseViewBenchmarkTypeLeftTop) {
