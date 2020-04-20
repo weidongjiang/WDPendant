@@ -23,6 +23,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+
+    UIButton *addBtn = [[UIButton alloc] init];
+    [addBtn setBackgroundColor:[UIColor blueColor]];
+    [addBtn setTitle:@"增" forState:UIControlStateNormal];
+    [addBtn addTarget:self action:@selector(addBtnDid) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addBtn];
+    [addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view);
+        make.bottom.equalTo(self.view).offset(-20);
+        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(30);
+    }];
+
+
     self.groupView = [[WDGroupView alloc] init];
     self.groupView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:self.groupView];
@@ -34,13 +48,70 @@
         make.bottom.equalTo(self.view).offset(-100);
     }];
 
-//    [self leftTop];
-//
-//    [self rightBottom];
-//
-//    [self rightTop];
 
     [self allview];
+
+}
+
+- (void)addBtnDid {
+
+    WDBaseView *view_4_0_leftTop = [[WDBaseView alloc] init];
+    view_4_0_leftTop.backgroundColor = [UIColor redColor];
+    view_4_0_leftTop.benchmarkType = WDBaseViewBenchmarkTypeLeftTop;
+    view_4_0_leftTop.levelWeight = 1;
+    view_4_0_leftTop.verticalWeight = 4;
+    view_4_0_leftTop.levelMager = 10;
+    view_4_0_leftTop.verticalMager = 10;
+    view_4_0_leftTop.width = 20;
+    view_4_0_leftTop.height = 20;
+    view_4_0_leftTop.testlabelText = @"4_0_leftTop";
+    view_4_0_leftTop.pendantViewID = 340;
+
+    WDBaseView *view_5_1_leftTop = [[WDBaseView alloc] init];
+    view_5_1_leftTop.backgroundColor = [UIColor redColor];
+    view_5_1_leftTop.benchmarkType = WDBaseViewBenchmarkTypeLeftTop;
+    view_5_1_leftTop.levelWeight = 1;
+    view_5_1_leftTop.verticalWeight = 5;
+    view_5_1_leftTop.levelMager = 10;
+    view_5_1_leftTop.verticalMager = 10;
+    view_5_1_leftTop.width = 80;
+    view_5_1_leftTop.height = 80;
+    view_5_1_leftTop.testlabelText = @"5_1_leftTop";
+    view_5_1_leftTop.pendantViewID = 351;
+
+
+    WDBaseView *view_2_2_RightTop = [[WDBaseView alloc] init];
+    view_2_2_RightTop.backgroundColor = [UIColor redColor];
+    view_2_2_RightTop.benchmarkType = WDBaseViewBenchmarkTypeRightTop;
+    view_2_2_RightTop.levelWeight = 2;
+    view_2_2_RightTop.verticalWeight = 2;
+    view_2_2_RightTop.levelMager = 10;
+    view_2_2_RightTop.verticalMager = 10;
+    view_2_2_RightTop.width = 20;
+    view_2_2_RightTop.height = 20;
+    view_2_2_RightTop.testlabelText = @"2_2_RightTop";
+    view_2_2_RightTop.pendantViewID = 2220;
+
+
+    WDBaseView *view_3_2_RightBottom = [[WDBaseView alloc] init];
+    view_3_2_RightBottom.backgroundColor = [UIColor redColor];
+    view_3_2_RightBottom.benchmarkType = WDBaseViewBenchmarkTypeRightBottom;
+    view_3_2_RightBottom.levelWeight = 2;
+    view_3_2_RightBottom.verticalWeight = 3;
+    view_3_2_RightBottom.levelMager = 10;
+    view_3_2_RightBottom.verticalMager = 10;
+    view_3_2_RightBottom.width = 20;
+    view_3_2_RightBottom.height = 20;
+    view_3_2_RightBottom.testlabelText = @"3_2_RightBottom";
+    view_3_2_RightBottom.pendantViewID = 3320;
+
+    [self.groupView addPendantView:view_3_2_RightBottom];
+
+    [self.groupView addPendantView:view_4_0_leftTop];
+    [self.groupView addPendantView:view_5_1_leftTop];
+    [self.groupView addPendantView:view_2_2_RightTop];
+
+
 
 }
 
@@ -57,6 +128,7 @@
     view_1_1_rightTop.width = 100;
     view_1_1_rightTop.height = 30;
     view_1_1_rightTop.testlabelText = @"1_1_rightTop";
+    view_1_1_rightTop.pendantViewID = 11;
 
     WDBaseView *view_1_2_rightTop = [[WDBaseView alloc] init];
     view_1_2_rightTop.backgroundColor = [UIColor yellowColor];
@@ -68,6 +140,8 @@
     view_1_2_rightTop.width = 100;
     view_1_2_rightTop.height = 100;
     view_1_2_rightTop.testlabelText = @"1_2_rightTop";
+    view_1_2_rightTop.pendantViewID = 12;
+
 
     WDBaseView *view_1_3_rightTop = [[WDBaseView alloc] init];
     view_1_3_rightTop.backgroundColor = [UIColor greenColor];
@@ -79,7 +153,7 @@
     view_1_3_rightTop.width = 50;
     view_1_3_rightTop.height = 50;
     view_1_3_rightTop.testlabelText = @"1_3_rightTop";
-
+    view_1_3_rightTop.pendantViewID = 13;
 
 
     WDBaseView *view_1_1_rightBottom = [[WDBaseView alloc] init];
@@ -92,6 +166,7 @@
     view_1_1_rightBottom.width = 100;
     view_1_1_rightBottom.height = 100;
     view_1_1_rightBottom.testlabelText = @"1_1_rightBottom";
+    view_1_1_rightBottom.pendantViewID = 211;
 
 
     WDBaseView *view_1_2_rightBottom = [[WDBaseView alloc] init];
@@ -104,6 +179,8 @@
     view_1_2_rightBottom.width = 80;
     view_1_2_rightBottom.height = 80;
     view_1_2_rightBottom.testlabelText = @"1_2_rightBottom";
+    view_1_2_rightBottom.pendantViewID = 212;
+
 
     WDBaseView *view_1_3_rightBottom = [[WDBaseView alloc] init];
     view_1_3_rightBottom.backgroundColor = [UIColor greenColor];
@@ -115,6 +192,7 @@
     view_1_3_rightBottom.width = 50;
     view_1_3_rightBottom.height = 50;
     view_1_3_rightBottom.testlabelText = @"1_3_rightBottom";
+    view_1_3_rightBottom.pendantViewID = 213;
 
 
 
@@ -129,6 +207,8 @@
     view_1_1_leftTop.width = 100;
     view_1_1_leftTop.height = 20;
     view_1_1_leftTop.testlabelText = @"1_1_leftTop";
+    view_1_1_leftTop.pendantViewID = 311;
+
 
     WDBaseView *view_1_2_leftTop = [[WDBaseView alloc] init];
     view_1_2_leftTop.backgroundColor = [UIColor yellowColor];
@@ -140,6 +220,7 @@
     view_1_2_leftTop.width = 50;
     view_1_2_leftTop.height = 20;
     view_1_2_leftTop.testlabelText = @"1_2_leftTop";
+    view_1_2_leftTop.pendantViewID = 312;
 
     WDBaseView *view_1_3_leftTop = [[WDBaseView alloc] init];
     view_1_3_leftTop.backgroundColor = [UIColor greenColor];
@@ -151,6 +232,7 @@
     view_1_3_leftTop.width = 50;
     view_1_3_leftTop.height = 20;
     view_1_3_leftTop.testlabelText = @"1_3_leftTop";
+    view_1_3_leftTop.pendantViewID = 313;
 
 
     WDBaseView *view_2_1_leftTop = [[WDBaseView alloc] init];
@@ -163,6 +245,7 @@
     view_2_1_leftTop.width = 50;
     view_2_1_leftTop.height = 20;
     view_2_1_leftTop.testlabelText = @"2_1_leftTop";
+    view_2_1_leftTop.pendantViewID = 321;
 
 
     WDBaseView *view_2_2_leftTop = [[WDBaseView alloc] init];
@@ -175,6 +258,7 @@
     view_2_2_leftTop.width = 100;
     view_2_2_leftTop.height = 20;
     view_2_2_leftTop.testlabelText = @"2_2_leftTop";
+    view_2_2_leftTop.pendantViewID = 322;
 
 
     WDBaseView *view_3_1_leftTop = [[WDBaseView alloc] init];
@@ -187,6 +271,7 @@
     view_3_1_leftTop.width = 100;
     view_3_1_leftTop.height = 100;
     view_3_1_leftTop.testlabelText = @"3_1_leftTop";
+    view_3_1_leftTop.pendantViewID = 331;
 
     WDBaseView *view_3_2_leftTop = [[WDBaseView alloc] init];
     view_3_2_leftTop.backgroundColor = [UIColor yellowColor];
@@ -198,19 +283,21 @@
     view_3_2_leftTop.width = 80;
     view_3_2_leftTop.height = 40;
     view_3_2_leftTop.testlabelText = @"3_2_leftTop";
+    view_3_2_leftTop.pendantViewID = 332;
 
 
 
     WDBaseView *view_4_1_leftTop = [[WDBaseView alloc] init];
     view_4_1_leftTop.backgroundColor = [UIColor redColor];
     view_4_1_leftTop.benchmarkType = WDBaseViewBenchmarkTypeLeftTop;
-    view_4_1_leftTop.levelWeight = 1;
+    view_4_1_leftTop.levelWeight = 3;
     view_4_1_leftTop.verticalWeight = 4;
     view_4_1_leftTop.levelMager = 10;
     view_4_1_leftTop.verticalMager = 10;
     view_4_1_leftTop.width = 200;
     view_4_1_leftTop.height = 100;
     view_4_1_leftTop.testlabelText = @"4_1_leftTop";
+    view_4_1_leftTop.pendantViewID = 341;
 
 
     NSMutableArray *m_array = [NSMutableArray array];
