@@ -27,6 +27,8 @@ typedef NS_ENUM(NSInteger,WDBaseViewBenchmarkType) {
 @property (nonatomic, assign) CGFloat         width; ///< view宽度
 @property (nonatomic, assign) CGFloat         height; ///< view高度
 
+@property (nonatomic, copy) NSString           *testlabelText; ///<  <#value#>
+
 @end
 
 NS_ASSUME_NONNULL_END
