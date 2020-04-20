@@ -136,21 +136,69 @@
     }
 }
 
-//
-//- (void)updatePendantView:(WDBaseView *)pendantView {
-//    for (int i = 0; i < self.pendantArray.count; i++) {
-//        WDBaseView *objcview = self.pendantArray[i];
-//        if (objcview.pendantViewID == pendantView.pendantViewID && objcview.benchmarkType == pendantView.benchmarkType) {
-//            @synchronized (self.pendantArray) {
-//                [self.pendantArray replaceObjectAtIndex:i withObject:pendantView];
-//                [self addPendantViewArray:self.pendantArray];
-//            }
-//            break;
-//        }
-//    }
-//
-//}
-//
+
+- (void)updatePendantView:(WDBaseView *)pendantView {
+
+    if (pendantView.benchmarkType == WDBaseViewBenchmarkTypeLeftTop) {
+        for (int i = 0; i < self.leftTopPendantArray.count; i++) {
+            WDBaseView *objcview = self.leftTopPendantArray[i];
+
+            if (objcview.pendantViewID == pendantView.pendantViewID && objcview.benchmarkType == pendantView.benchmarkType) {
+                @synchronized (self.leftTopPendantArray) {
+                    [self.leftTopPendantArray replaceObjectAtIndex:i withObject:pendantView];
+                }
+                for (WDBaseView *p_view in self.leftTopPendantItemArray) {
+                    if (p_view) {
+                        [p_view removeFromSuperview];
+                    }
+                }
+                [self.leftTopPendantItemArray removeAllObjects];
+                [self updateLayoutPendantViewArray:[self sortArray:self.leftTopPendantArray]];
+                break;
+            }
+        }
+    }else if (pendantView.benchmarkType == WDBaseViewBenchmarkTypeRightTop) {
+
+        for (int i = 0; i < self.rightTopPendantArray.count; i++) {
+            WDBaseView *objcview = self.rightTopPendantArray[i];
+
+            if (objcview.pendantViewID == pendantView.pendantViewID && objcview.benchmarkType == pendantView.benchmarkType) {
+                @synchronized (self.rightTopPendantArray) {
+                    [self.rightTopPendantArray replaceObjectAtIndex:i withObject:pendantView];
+                }
+                for (WDBaseView *p_view in self.rightTopPendantItemArray) {
+                    if (p_view) {
+                        [p_view removeFromSuperview];
+                    }
+                }
+                [self.rightTopPendantItemArray removeAllObjects];
+                [self updateLayoutPendantViewArray:[self sortArray:self.rightTopPendantArray]];
+                break;
+            }
+        }
+    }else if (pendantView.benchmarkType == WDBaseViewBenchmarkTypeRightBottom) {
+
+        for (int i = 0; i < self.rightBottomPendantArray.count; i++) {
+            WDBaseView *objcview = self.rightBottomPendantArray[i];
+
+            if (objcview.pendantViewID == pendantView.pendantViewID && objcview.benchmarkType == pendantView.benchmarkType) {
+                @synchronized (self.rightBottomPendantArray) {
+                    [self.rightBottomPendantArray replaceObjectAtIndex:i withObject:pendantView];
+                }
+                for (WDBaseView *p_view in self.rightBottomPendantItemArray) {
+                    if (p_view) {
+                        [p_view removeFromSuperview];
+                    }
+                }
+                [self.rightBottomPendantItemArray removeAllObjects];
+                [self updateLayoutPendantViewArray:[self sortArray:self.rightBottomPendantArray]];
+                break;
+            }
+        }
+    }
+
+}
+
 //- (BOOL)getPendantView:(WDBaseView *)pendantView {
 //    for (int i = 0; i < self.pendantArray.count; i++) {
 //        WDBaseView *objcview = self.pendantArray[i];
