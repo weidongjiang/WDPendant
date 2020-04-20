@@ -74,6 +74,20 @@
         make.height.mas_equalTo(30);
     }];
 
+
+    UIButton *_updateBtn = [[UIButton alloc] init];
+    [_updateBtn setBackgroundColor:[UIColor blueColor]];
+    [_updateBtn setTitle:@"移" forState:UIControlStateNormal];
+    [_updateBtn addTarget:self action:@selector(_updateBtnDid) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_updateBtn];
+    [_updateBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(addBtn);
+        make.bottom.equalTo(addBtn.mas_top).offset(-2);
+        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(30);
+    }];
+
+
     self.groupView = [[WDGroupView alloc] init];
     self.groupView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:self.groupView];
@@ -88,6 +102,38 @@
 
     [self allview];
 
+}
+
+- (void)_updateBtnDid {
+
+    WDBaseView *view_2_2_RightTop = [[WDBaseView alloc] init];
+    view_2_2_RightTop.backgroundColor = [UIColor redColor];
+    view_2_2_RightTop.benchmarkType = WDBaseViewBenchmarkTypeRightTop;
+    view_2_2_RightTop.levelWeight = 2;
+    view_2_2_RightTop.verticalWeight = 2;
+    view_2_2_RightTop.levelMager = 10;
+    view_2_2_RightTop.verticalMager = 10;
+    view_2_2_RightTop.width = 60;
+    view_2_2_RightTop.height = 60;
+    view_2_2_RightTop.testlabelText = @"红包";
+    view_2_2_RightTop.pendantViewID = 2220;
+
+
+    [self.groupView removePendantView:view_2_2_RightTop];
+
+
+    view_2_2_RightTop.backgroundColor = [UIColor redColor];
+    view_2_2_RightTop.benchmarkType = WDBaseViewBenchmarkTypeLeftTop;
+    view_2_2_RightTop.levelWeight = 1;
+    view_2_2_RightTop.verticalWeight = 3;
+    view_2_2_RightTop.levelMager = 10;
+    view_2_2_RightTop.verticalMager = 10;
+    view_2_2_RightTop.width = 60;
+    view_2_2_RightTop.height = 60;
+    view_2_2_RightTop.testlabelText = @"红包";
+    view_2_2_RightTop.pendantViewID = 2220;
+
+    [self.groupView addPendantView:view_2_2_RightTop];
 }
 
 - (void)getBtnDid {
@@ -132,7 +178,7 @@
     view_2_2_RightTop.verticalMager = 10;
     view_2_2_RightTop.width = 60;
     view_2_2_RightTop.height = 60;
-    view_2_2_RightTop.testlabelText = @"2_2_RightTop";
+    view_2_2_RightTop.testlabelText = @"红包";
     view_2_2_RightTop.pendantViewID = 2220;
 
     WDBaseView *view_3_2_RightBottom = [[WDBaseView alloc] init];
@@ -410,7 +456,7 @@
     WDBaseView *view_3_1_leftTop = [[WDBaseView alloc] init];
     view_3_1_leftTop.backgroundColor = [UIColor yellowColor];
     view_3_1_leftTop.benchmarkType = WDBaseViewBenchmarkTypeLeftTop;
-    view_3_1_leftTop.levelWeight = 1;
+    view_3_1_leftTop.levelWeight = 3;
     view_3_1_leftTop.verticalWeight = 3;
     view_3_1_leftTop.levelMager = 10;
     view_3_1_leftTop.verticalMager = 10;
@@ -422,7 +468,7 @@
     WDBaseView *view_3_2_leftTop = [[WDBaseView alloc] init];
     view_3_2_leftTop.backgroundColor = [UIColor yellowColor];
     view_3_2_leftTop.benchmarkType = WDBaseViewBenchmarkTypeLeftTop;
-    view_3_2_leftTop.levelWeight = 2;
+    view_3_2_leftTop.levelWeight = 6;
     view_3_2_leftTop.verticalWeight = 3;
     view_3_2_leftTop.levelMager = 10;
     view_3_2_leftTop.verticalMager = 10;
