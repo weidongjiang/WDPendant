@@ -13,14 +13,29 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WDGroupView : UIView
 
+/// 添加一组View
+/// @param pendantViewArray pendantViewArray description
+- (void)addPendantViewArray:(NSMutableArray<WDBaseView *> *)pendantViewArray;
 
+
+/// 添加单个View
+/// @param pendantView pendantView description
 - (void)addPendantView:(WDBaseView *)pendantView;
 
-- (void)addLeftTopPendantView:(NSMutableArray<WDBaseView *> *)pendantViewArray;
+/// 删除单个View 确保View的唯一性
+/// @param pendantView pendantView description
+- (void)removePendantView:(WDBaseView *)pendantView;
 
-- (void)addRightBottomPendantView:(NSMutableArray<WDBaseView *> *)pendantViewArray;
 
-- (void)addRightTopPendantView:(NSMutableArray<WDBaseView *> *)pendantViewArray;
+/// 更新某一个view的大小和属性
+/// @param pendantView pendantView description
+- (void)updatePendantView:(WDBaseView *)pendantView;
+
+
+/// 查询是否有这个View 显示在管理器里面，主要依据 pendantViewID 和 WDBaseViewBenchmarkType 进行查询
+/// @param pendantView pendantView description
+/// yes表示存在
+- (BOOL)getPendantView:(WDBaseView *)pendantView;
 
 @end
 
