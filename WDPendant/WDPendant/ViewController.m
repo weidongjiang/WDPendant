@@ -62,6 +62,18 @@
     }];
 
 
+    UIButton *getBtn = [[UIButton alloc] init];
+    [getBtn setBackgroundColor:[UIColor blueColor]];
+    [getBtn setTitle:@"查" forState:UIControlStateNormal];
+    [getBtn addTarget:self action:@selector(getBtnDid) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:getBtn];
+    [getBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(updateBtn.mas_right).offset(2);
+        make.bottom.equalTo(addBtn);
+        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(30);
+    }];
+
     self.groupView = [[WDGroupView alloc] init];
     self.groupView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:self.groupView];
@@ -76,6 +88,24 @@
 
     [self allview];
 
+}
+
+- (void)getBtnDid {
+
+    WDBaseView *view_5_1_leftTop = [[WDBaseView alloc] init];
+    view_5_1_leftTop.backgroundColor = [UIColor redColor];
+    view_5_1_leftTop.benchmarkType = WDBaseViewBenchmarkTypeLeftTop;
+    view_5_1_leftTop.levelWeight = 1;
+    view_5_1_leftTop.verticalWeight = 5;
+    view_5_1_leftTop.levelMager = 10;
+    view_5_1_leftTop.verticalMager = 10;
+    view_5_1_leftTop.width = 80;
+    view_5_1_leftTop.height = 80;
+    view_5_1_leftTop.testlabelText = @"5_1_leftTop";
+    view_5_1_leftTop.pendantViewID = 351;
+
+    BOOL isHave = [self.groupView getPendantView:view_5_1_leftTop];
+    NSLog(@"isHave--%@",@(isHave));
 }
 
 - (void)updateBtnDid {

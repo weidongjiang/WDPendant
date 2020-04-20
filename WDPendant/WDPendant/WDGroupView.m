@@ -199,15 +199,16 @@
 
 }
 
-//- (BOOL)getPendantView:(WDBaseView *)pendantView {
-//    for (int i = 0; i < self.pendantArray.count; i++) {
-//        WDBaseView *objcview = self.pendantArray[i];
-//        if (objcview.pendantViewID == pendantView.pendantViewID && objcview.benchmarkType == pendantView.benchmarkType) {
-//            return YES;
-//        }
-//    }
-//    return NO;
-//}
+- (BOOL)getPendantView:(WDBaseView *)pendantView {
+
+    for (int i = 0; i < self.subviews.count; i++) {
+        WDBaseView *objcview = self.subviews[i];
+        if (objcview.pendantViewID == pendantView.pendantViewID && objcview.benchmarkType == pendantView.benchmarkType) {
+            return YES;
+        }
+    }
+    return NO;
+}
 
 
 - (void)addPendantViewArray:(NSMutableArray<WDBaseView *> *)pendantViewArray {
