@@ -36,6 +36,18 @@
         make.height.mas_equalTo(30);
     }];
 
+    UIButton *removeBtn = [[UIButton alloc] init];
+    [removeBtn setBackgroundColor:[UIColor blueColor]];
+    [removeBtn setTitle:@"删" forState:UIControlStateNormal];
+    [removeBtn addTarget:self action:@selector(removeBtnDid) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:removeBtn];
+    [removeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(addBtn.mas_right);
+        make.bottom.equalTo(addBtn);
+        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(30);
+    }];
+
 
     self.groupView = [[WDGroupView alloc] init];
     self.groupView.backgroundColor = [UIColor grayColor];
@@ -50,6 +62,52 @@
 
 
     [self allview];
+
+}
+
+- (void)removeBtnDid {
+
+    WDBaseView *view_4_0_leftTop = [[WDBaseView alloc] init];
+    view_4_0_leftTop.backgroundColor = [UIColor redColor];
+    view_4_0_leftTop.benchmarkType = WDBaseViewBenchmarkTypeLeftTop;
+    view_4_0_leftTop.levelWeight = 1;
+    view_4_0_leftTop.verticalWeight = 4;
+    view_4_0_leftTop.levelMager = 10;
+    view_4_0_leftTop.verticalMager = 10;
+    view_4_0_leftTop.width = 20;
+    view_4_0_leftTop.height = 20;
+    view_4_0_leftTop.testlabelText = @"4_0_leftTop";
+    view_4_0_leftTop.pendantViewID = 340;
+
+
+    WDBaseView *view_1_2_rightTop = [[WDBaseView alloc] init];
+    view_1_2_rightTop.backgroundColor = [UIColor yellowColor];
+    view_1_2_rightTop.benchmarkType = WDBaseViewBenchmarkTypeRightTop;
+    view_1_2_rightTop.levelWeight = 1;
+    view_1_2_rightTop.verticalWeight = 2;
+    view_1_2_rightTop.levelMager = 10;
+    view_1_2_rightTop.verticalMager = 10;
+    view_1_2_rightTop.width = 100;
+    view_1_2_rightTop.height = 100;
+    view_1_2_rightTop.testlabelText = @"1_2_rightTop";
+    view_1_2_rightTop.pendantViewID = 12;
+
+    WDBaseView *view_1_2_rightBottom = [[WDBaseView alloc] init];
+    view_1_2_rightBottom.backgroundColor = [UIColor yellowColor];
+    view_1_2_rightBottom.benchmarkType = WDBaseViewBenchmarkTypeRightBottom;
+    view_1_2_rightBottom.levelWeight = 1;
+    view_1_2_rightBottom.verticalWeight = 2;
+    view_1_2_rightBottom.levelMager = 10;
+    view_1_2_rightBottom.verticalMager = 10;
+    view_1_2_rightBottom.width = 80;
+    view_1_2_rightBottom.height = 80;
+    view_1_2_rightBottom.testlabelText = @"1_2_rightBottom";
+    view_1_2_rightBottom.pendantViewID = 212;
+
+    [self.groupView removePendantView:view_4_0_leftTop];
+    [self.groupView removePendantView:view_1_2_rightTop];
+    [self.groupView removePendantView:view_1_2_rightBottom];
+
 
 }
 

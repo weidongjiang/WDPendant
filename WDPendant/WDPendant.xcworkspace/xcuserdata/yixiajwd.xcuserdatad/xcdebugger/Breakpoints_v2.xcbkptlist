@@ -25,8 +25,8 @@
             filePath = "WDPendant/WDGroupView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "-addPendantView:"
             landmarkType = "7">
             <Locations>
@@ -41,8 +41,8 @@
                   urlString = "file:///Users/yixiajwd/Desktop/study/WDPendant/WDPendant/WDPendant/WDGroupView.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
                   offsetFromSymbolStart = "1272">
                </Location>
                <Location
@@ -56,27 +56,11 @@
                   urlString = "file:///Users/yixiajwd/Desktop/study/WDPendant/WDPendant/WDPendant/WDGroupView.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
                   offsetFromSymbolStart = "1289">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1AAF3A69-4A35-44DB-9D7F-8E7BFECDC736"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WDPendant/WDGroupView.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "-addPendantViewArray:"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -89,10 +73,10 @@
             filePath = "WDPendant/WDGroupView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "-getPendantView:"
-            landmarkType = "7">
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "WDGroupView"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -105,58 +89,10 @@
             filePath = "WDPendant/WDGroupView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "-updatePendantView:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6C44EC80-1C6E-42B8-A8C8-BAA9A2E0C6A3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WDPendant/WDGroupView.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "-removePendantView:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6C44EC80-1C6E-42B8-A8C8-BAA9A2E0C6A3 - a641ef429309a137"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[WDGroupView removePendantView:]"
-                  moduleName = "WDPendant"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yixiajwd/Desktop/study/WDPendant/WDPendant/WDPendant/WDGroupView.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "70">
-               </Location>
-               <Location
-                  uuid = "6C44EC80-1C6E-42B8-A8C8-BAA9A2E0C6A3 - a641ef429309a137"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[WDGroupView removePendantView:]"
-                  moduleName = "WDPendant"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yixiajwd/Desktop/study/WDPendant/WDPendant/WDPendant/WDGroupView.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "90">
-               </Location>
-            </Locations>
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "WDGroupView"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -169,10 +105,58 @@
             filePath = "WDPendant/WDGroupView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-addPendantView:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0D46CA1-0BB9-421B-AC3C-22047126418C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WDPendant/WDGroupView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "-removePendantView:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B0D46CA1-0BB9-421B-AC3C-22047126418C - a641ef429309a137"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WDGroupView removePendantView:]"
+                  moduleName = "WDPendant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yixiajwd/Desktop/study/WDPendant/WDPendant/WDPendant/WDGroupView.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "103">
+               </Location>
+               <Location
+                  uuid = "B0D46CA1-0BB9-421B-AC3C-22047126418C - a641ef429309a137"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WDGroupView removePendantView:]"
+                  moduleName = "WDPendant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yixiajwd/Desktop/study/WDPendant/WDPendant/WDPendant/WDGroupView.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "123">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
