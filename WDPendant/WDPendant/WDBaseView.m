@@ -57,28 +57,4 @@
 
 }
 
-- (WDBaseViewBenchmarkType)pendantBenchmarkType {
-    return WDBaseViewBenchmarkTypeLeftTop;
-}
-- (CGFloat)pendantID {
-    return 1;
-}
-- (CGFloat)pendantLevelWeight {
-    return 0;
-}
-- (CGFloat)pendantVerticalWeight {
-    return 0;
-}
-- (CGFloat)pendantLevelMargin {
-    return 0;
-}
-- (CGFloat)pendantVerticalMargin {
-    return 0;
-}
-- (CGFloat)pendantWidth {
-    return 0;
-}
-- (CGFloat)pendantHeight {
-    return 0;
-}
 @end

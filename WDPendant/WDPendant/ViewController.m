@@ -174,8 +174,8 @@
 
 - (void)updateBtnDid {
 
-    self.homeView.homeHeight = 100;
-    self.homeView.homeWidth = 100;
+    self.homeView.pendantHeight = 100;
+    self.homeView.pendantWidth = 100;
     [self.pendantManager updatePendantView:self.homeView];
 }
 

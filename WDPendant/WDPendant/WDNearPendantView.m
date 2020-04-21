@@ -12,6 +12,14 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.pendantBenchmarkType = WDBaseViewBenchmarkTypeLeftTop;
+        self.pendantID = 10004;
+        self.pendantLevelWeight = 2;
+        self.pendantVerticalWeight = 2;
+        self.pendantLevelMargin = 10;
+        self.pendantVerticalMargin = 10;
+        self.pendantWidth = 100;
+        self.pendantHeight = 50;
         self.backgroundColor = [UIColor greenColor];
     }
     return self;
@@ -24,37 +32,10 @@
 
 - (void)updatePendantLayout:(CGPoint)point {
 
-    self.frame = CGRectMake(point.x, point.y, 80, 80);
+    self.frame = CGRectMake(point.x, point.y, self.pendantWidth, self.pendantHeight);
 
 }
 
-
-- (WDBaseViewBenchmarkType)pendantBenchmarkType {
-    return WDBaseViewBenchmarkTypeLeftTop;
-}
-- (CGFloat)pendantID {
-    return 10004;
-}
-- (CGFloat)pendantLevelWeight {
-    return 1;
-}
-
-- (CGFloat)pendantVerticalWeight {
-    return 3;
-}
-
-- (CGFloat)pendantLevelMargin {
-    return 10;
-}
-- (CGFloat)pendantVerticalMargin {
-    return 10;
-}
-- (CGFloat)pendantWidth {
-    return 80;
-}
-- (CGFloat)pendantHeight {
-    return 80;
-}
 - (void)setTestlabelText:(NSString *)testlabelText {
     [super setTestlabelText:testlabelText];
 }

@@ -233,12 +233,12 @@
             [objView addPendantSubview:objView.pendantSuperView];
         }
 
-        CGFloat width = [objView pendantWidth];
-        CGFloat height = [objView pendantHeight];
-        CGFloat levelMager = [objView pendantLevelMargin];
-        CGFloat verticalMager = [objView pendantVerticalMargin];
-        CGFloat _verticalWeight = [objView pendantLevelWeight];
-        WDBaseViewBenchmarkType type = [objView pendantBenchmarkType];
+        CGFloat width = objView.pendantWidth;
+        CGFloat height = objView.pendantHeight;
+        CGFloat levelMager = objView.pendantLevelMargin;
+        CGFloat verticalMager = objView.pendantVerticalMargin;
+        CGFloat _verticalWeight = objView.pendantLevelWeight;
+        WDBaseViewBenchmarkType type = objView.pendantBenchmarkType;
 
 
         if (_verticalWeight > verticalWeight) { // 控制行号 到下一行
@@ -297,11 +297,11 @@
 
     // 竖直方向的确定是哪一行
 
-    NSComparisonResult result = [[NSNumber numberWithInt:[pendantObj1 pendantVerticalWeight]] compare:[NSNumber numberWithInt:[pendantObj2 pendantVerticalWeight]]];
+    NSComparisonResult result = [[NSNumber numberWithInt:pendantObj1.pendantVerticalWeight] compare:[NSNumber numberWithInt:pendantObj2.pendantVerticalWeight]];
     //如果是同一行，确定每一行的顺序]
      if (result == NSOrderedSame) {
 
-         result = [[NSNumber numberWithInt:[pendantObj1 pendantLevelWeight]] compare:[NSNumber numberWithInt:[pendantObj2 pendantLevelWeight]]];
+         result = [[NSNumber numberWithInt:pendantObj1.pendantLevelWeight] compare:[NSNumber numberWithInt: pendantObj2.pendantLevelWeight]];
      }
      return result;
 }
