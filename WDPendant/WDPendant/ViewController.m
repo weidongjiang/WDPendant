@@ -164,7 +164,7 @@
 
     nearView.testlabelText = @"nearView";
     nearView.pendantSuperView = self.threeView;
-    nearView.pendantBenchmarkType = WDBaseViewBenchmarkTypeLeftBottom;
+    nearView.pendantBenchmarkType = WDBaseViewBenchmarkTypeLeftTop;
     [self.pendantManager addPendantView:nearView];
 }
 
