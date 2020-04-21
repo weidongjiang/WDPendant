@@ -85,7 +85,7 @@
     UIButton *_updateBtn = [[UIButton alloc] init];
     [_updateBtn setBackgroundColor:[UIColor blueColor]];
     [_updateBtn setTitle:@"移" forState:UIControlStateNormal];
-    [_updateBtn addTarget:self action:@selector(_updateBtnDid) forControlEvents:UIControlEventTouchUpInside];
+    [_updateBtn addTarget:self action:@selector(_moveBtnDid) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_updateBtn];
     [_updateBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(addBtn);
@@ -149,8 +149,13 @@
 
 }
 
-- (void)_updateBtnDid {
+- (void)_moveBtnDid {
     [self.pendantManager removePendantView:self.homeView];
+}
+
+- (void)updateBtnDid {
+//self.homeView
+    [self.pendantManager updatePendantView:self.homeView];
 }
 
 //- (void)_updateBtnDid {

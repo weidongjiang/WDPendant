@@ -111,56 +111,56 @@
 
 - (void)updatePendantView:(WDBaseView *)pendantView {
 
-//    if ([pendantView pendantBenchmarkType] == WDBaseViewBenchmarkTypeLeftTop) {
-//        for (int i = 0; i < self.leftTopPendantArray.count; i++) {
-//            WDBaseView *objcview = self.leftTopPendantArray[i];
-//
-//            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
-//                @synchronized (self.leftTopPendantArray) {
-//                    [self.leftTopPendantArray replaceObjectAtIndex:i withObject:pendantView];
-//                }
-//
-//                // 删除View 和 临时数组
-//                [self removeFromSuperviewAndPendantItemArray:self.leftTopPendantItemArray];
-//
-//                [self updateLayoutPendantViewArray:[self sortArray:self.leftTopPendantArray]];
-//                break;
-//            }
-//        }
-//    }else if ([pendantView pendantBenchmarkType] == WDBaseViewBenchmarkTypeRightTop) {
-//
-//        for (int i = 0; i < self.rightTopPendantArray.count; i++) {
-//            WDBaseView *objcview = self.rightTopPendantArray[i];
-//
-//            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
-//                @synchronized (self.rightTopPendantArray) {
-//                    [self.rightTopPendantArray replaceObjectAtIndex:i withObject:pendantView];
-//                }
-//
-//                // 删除View 和 临时数组
-//                [self removeFromSuperviewAndPendantItemArray:self.rightTopPendantItemArray];
-//
-//                [self updateLayoutPendantViewArray:[self sortArray:self.rightTopPendantArray]];
-//                break;
-//            }
-//        }
-//    }else if ([pendantView pendantBenchmarkType] == WDBaseViewBenchmarkTypeRightBottom) {
-//
-//        for (int i = 0; i < self.rightBottomPendantArray.count; i++) {
-//            WDBaseView *objcview = self.rightBottomPendantArray[i];
-//
-//            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
-//                @synchronized (self.rightBottomPendantArray) {
-//                    [self.rightBottomPendantArray replaceObjectAtIndex:i withObject:pendantView];
-//                }
-//                // 删除View 和 临时数组
-//                [self removeFromSuperviewAndPendantItemArray:self.rightBottomPendantItemArray];
-//
-//                [self updateLayoutPendantViewArray:[self sortArray:self.rightBottomPendantArray]];
-//                break;
-//            }
-//        }
-//    }
+    if ([pendantView pendantBenchmarkType] == WDBaseViewBenchmarkTypeLeftTop) {
+        for (int i = 0; i < self.leftTopPendantArray.count; i++) {
+            WDBaseView *objcview = self.leftTopPendantArray[i];
+
+            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
+                @synchronized (self.leftTopPendantArray) {
+                    [self.leftTopPendantArray replaceObjectAtIndex:i withObject:pendantView];
+                }
+
+                // 删除View 和 临时数组
+                [self removeFromSuperviewAndPendantItemArray:self.leftTopPendantItemArray];
+
+                [self updateLayoutPendantViewArray:[self sortArray:self.leftTopPendantArray]];
+                break;
+            }
+        }
+    }else if ([pendantView pendantBenchmarkType] == WDBaseViewBenchmarkTypeRightTop) {
+
+        for (int i = 0; i < self.rightTopPendantArray.count; i++) {
+            WDBaseView *objcview = self.rightTopPendantArray[i];
+
+            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
+                @synchronized (self.rightTopPendantArray) {
+                    [self.rightTopPendantArray replaceObjectAtIndex:i withObject:pendantView];
+                }
+
+                // 删除View 和 临时数组
+                [self removeFromSuperviewAndPendantItemArray:self.rightTopPendantItemArray];
+
+                [self updateLayoutPendantViewArray:[self sortArray:self.rightTopPendantArray]];
+                break;
+            }
+        }
+    }else if ([pendantView pendantBenchmarkType] == WDBaseViewBenchmarkTypeRightBottom) {
+
+        for (int i = 0; i < self.rightBottomPendantArray.count; i++) {
+            WDBaseView *objcview = self.rightBottomPendantArray[i];
+
+            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
+                @synchronized (self.rightBottomPendantArray) {
+                    [self.rightBottomPendantArray replaceObjectAtIndex:i withObject:pendantView];
+                }
+                // 删除View 和 临时数组
+                [self removeFromSuperviewAndPendantItemArray:self.rightBottomPendantItemArray];
+
+                [self updateLayoutPendantViewArray:[self sortArray:self.rightBottomPendantArray]];
+                break;
+            }
+        }
+    }
 
 }
 
