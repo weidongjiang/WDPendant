@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 查询是否有这个View 显示在管理器里面，主要依据 pendantViewID 和 WDBaseViewBenchmarkType 进行查询
 /// @param pendantView pendantView description
 /// yes表示存在
-- (BOOL)getPendantView:(WDBaseView *)pendantView;
+- (BOOL)isHavePendantView:(WDBaseView *)pendantView;
 
 
 @end

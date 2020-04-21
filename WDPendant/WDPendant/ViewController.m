@@ -157,6 +157,11 @@
 
 }
 
+- (void)getBtnDid {
+
+    [self.pendantManager isHavePendantView:self.homeView];
+}
+
 - (void)addBtnDid {
 
     WDNearPendantView *nearView = [[WDNearPendantView alloc] init];

@@ -250,19 +250,17 @@
     return nil;
 }
 
+- (BOOL)isHavePendantView:(WDBaseView *)pendantView {
 
-- (BOOL)getPendantView:(WDBaseView *)pendantView {
+    BOOL isHaveLeftTop = [self getPendantView:pendantView pendantItemArray:self.leftTopPendantItemArray];
+    BOOL isHaveLeftBottom = [self getPendantView:pendantView pendantItemArray:self.leftBottomPendantItemArray];
+    BOOL isHaveRightTop = [self getPendantView:pendantView pendantItemArray:self.rightTopPendantItemArray];
+    BOOL isHaveRightBottom = [self getPendantView:pendantView pendantItemArray:self.rightBottomPendantItemArray];
 
-    WDBaseViewBenchmarkType pendantBenchmarkType = pendantView.pendantBenchmarkType;
-    if (pendantBenchmarkType == WDBaseViewBenchmarkTypeLeftTop) {
-        return [self getPendantView:pendantView pendantItemArray:self.leftTopPendantItemArray];
-    }else if (pendantBenchmarkType == WDBaseViewBenchmarkTypeLeftBottom) {
-        return [self getPendantView:pendantView pendantItemArray:self.leftBottomPendantItemArray];
-    }else if (pendantBenchmarkType == WDBaseViewBenchmarkTypeRightTop) {
-        return [self getPendantView:pendantView pendantItemArray:self.rightTopPendantItemArray];
-    }else if (pendantBenchmarkType == WDBaseViewBenchmarkTypeRightBottom) {
-        return [self getPendantView:pendantView pendantItemArray:self.rightBottomPendantItemArray];
+    if (isHaveLeftTop || isHaveLeftBottom || isHaveRightTop || isHaveRightBottom) {
+        return YES;
     }
+
     return NO;
 }
 
