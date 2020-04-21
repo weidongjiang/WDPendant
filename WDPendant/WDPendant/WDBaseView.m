@@ -17,6 +17,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.isRetract = YES;
         [self setupView];
     }
     return self;

@@ -27,7 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat         pendantVerticalMargin; ///< 与上一个View的竖直方向的间距Margin
 @property (nonatomic, assign) CGFloat         pendantWidth; ///< view宽度
 @property (nonatomic, assign) CGFloat         pendantHeight; ///< view高度
-//
+@property (nonatomic, assign) BOOL         isRetract; ///< <#value#>
+
 @property (nonatomic, copy) NSString           *testlabelText; ///<  <#value#>
 @property (nonatomic, strong) UIView        *pendantSuperView; ///< <#value#>
 

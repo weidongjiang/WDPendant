@@ -78,25 +78,35 @@
     if (pendantBenchmarkType == WDBaseViewBenchmarkTypeLeftTop) {
         for (WDBaseView *objcview in self.leftTopPendantArray) {
             if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
-                @synchronized (self.leftTopPendantArray) {
-                    [self.leftTopPendantArray removeObject:objcview];
+                if (pendantView.isRetract) {
+                    @synchronized (self.leftTopPendantArray) {
+                        [self.leftTopPendantArray removeObject:objcview];
+                    }
                 }
                 // 删除View 和 临时数组
                 [self removeFromSuperviewAndPendantItemArray:self.leftTopPendantItemArray];
                 [self updateLayoutPendantViewArray:[self sortArray:self.leftTopPendantArray]];
+                if (!pendantView.isRetract) {
+                    [pendantView removeFromSuperview];
+                }
                 break;
             }
         }
     }else if (pendantBenchmarkType == WDBaseViewBenchmarkTypeRightTop) {
         for (WDBaseView *objcview in self.rightTopPendantArray) {
             if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
-                @synchronized (self.rightTopPendantArray) {
-                    [self.rightTopPendantArray removeObject:objcview];
+                if (pendantView.isRetract) {
+                    @synchronized (self.rightTopPendantArray) {
+                        [self.rightTopPendantArray removeObject:objcview];
+                    }
                 }
 
                 // 删除View 和 临时数组
                 [self removeFromSuperviewAndPendantItemArray:self.rightTopPendantItemArray];
                 [self updateLayoutPendantViewArray:[self sortArray:self.rightTopPendantArray]];
+                if (!pendantView.isRetract) {
+                    [pendantView removeFromSuperview];
+                }
                 break;
             }
         }
@@ -104,26 +114,36 @@
 
         for (WDBaseView *objcview in self.rightBottomPendantArray) {
             if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
-                @synchronized (self.rightBottomPendantArray) {
-                    [self.rightBottomPendantArray removeObject:objcview];
+                if (pendantView.isRetract) {
+                    @synchronized (self.rightBottomPendantArray) {
+                        [self.rightBottomPendantArray removeObject:objcview];
+                    }
                 }
 
                 // 删除View 和 临时数组
                 [self removeFromSuperviewAndPendantItemArray:self.rightBottomPendantItemArray];
                 [self updateLayoutPendantViewArray:[self sortArray:self.rightBottomPendantArray]];
+                if (!pendantView.isRetract) {
+                    [pendantView removeFromSuperview];
+                }
                 break;
             }
         }
     }else if (pendantBenchmarkType == WDBaseViewBenchmarkTypeLeftBottom) {
         for (WDBaseView *objcview in self.leftBottomPendantArray) {
             if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
-                @synchronized (self.leftBottomPendantArray) {
-                    [self.leftBottomPendantArray removeObject:objcview];
+                if (pendantView.isRetract) {
+                    @synchronized (self.leftBottomPendantArray) {
+                        [self.leftBottomPendantArray removeObject:objcview];
+                    }
                 }
 
                 // 删除View 和 临时数组
                 [self removeFromSuperviewAndPendantItemArray:self.leftBottomPendantItemArray];
                 [self updateLayoutPendantViewArray:[self sortArray:self.leftBottomPendantArray]];
+                if (!pendantView.isRetract) {
+                    [pendantView removeFromSuperview];
+                }
                 break;
             }
         }
@@ -211,6 +231,7 @@
 
 
     pendantView.pendantBenchmarkType = toBenchmarkType;
+    pendantView.isRetract = YES;
     [self addPendantView:pendantView];
 
 }
@@ -310,7 +331,8 @@
     for (int i = 0; i < pendantViewArray.count; i++) {
 
         WDBaseView *objView = pendantViewArray[i];
-        if (!objView.superview) {
+
+        if (!objView.superview && objView.isRetract) {
             [objView addPendantSubview:objView.pendantSuperView];
         }
 
@@ -338,43 +360,54 @@
             [self.leftTopPendantItemArray addObject:objView];
             point.x = x;
             point.y = y;
+            if (objView.isRetract) {
+                [objView mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(objView.superview).offset(x);
+                    make.top.equalTo(objView.superview).offset(y);
+                    make.width.mas_equalTo(width);
+                    make.height.mas_equalTo(height);
+                }];
+            }
 
-            [objView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(objView.superview).offset(x);
-                make.top.equalTo(objView.superview).offset(y);
-                make.width.mas_equalTo(width);
-                make.height.mas_equalTo(height);
-            }];
         }else if (type == WDBaseViewBenchmarkTypeRightTop) {
             [self.rightTopPendantItemArray addObject:objView];
             point.x = -x;
             point.y = y;
-            [objView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(objView.superview).offset(x);
-                make.top.equalTo(objView.superview).offset(y);
-                make.width.mas_equalTo(width);
-                make.height.mas_equalTo(height);
-            }];
+            if (objView.isRetract) {
+
+                [objView mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.right.equalTo(objView.superview).offset(x);
+                    make.top.equalTo(objView.superview).offset(y);
+                    make.width.mas_equalTo(width);
+                    make.height.mas_equalTo(height);
+                }];
+            }
         }else if (type == WDBaseViewBenchmarkTypeRightBottom) {
             [self.rightBottomPendantItemArray addObject:objView];
             point.x = -x;
             point.y = -y;
-            [objView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(objView.superview).offset(x);
-                make.bottom.equalTo(objView.superview).offset(y);
-                make.width.mas_equalTo(width);
-                make.height.mas_equalTo(height);
-            }];
+            if (objView.isRetract) {
+
+                [objView mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.right.equalTo(objView.superview).offset(x);
+                    make.bottom.equalTo(objView.superview).offset(y);
+                    make.width.mas_equalTo(width);
+                    make.height.mas_equalTo(height);
+                }];
+            }
         }else if (type == WDBaseViewBenchmarkTypeLeftBottom) {
             [self.leftBottomPendantItemArray addObject:objView];
             point.x = x;
             point.y = -y;
-            [objView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(objView.superview).offset(x);
-                make.bottom.equalTo(objView.superview).offset(y);
-                make.width.mas_equalTo(width);
-                make.height.mas_equalTo(height);
-            }];
+            if (objView.isRetract) {
+
+                [objView mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(objView.superview).offset(x);
+                    make.bottom.equalTo(objView.superview).offset(y);
+                    make.width.mas_equalTo(width);
+                    make.height.mas_equalTo(height);
+                }];
+            }
         }
 
         [objView didUpdatePendantLayout:objView];

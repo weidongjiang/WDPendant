@@ -169,7 +169,8 @@
 }
 
 - (void)_moveBtnDid {
-    
+
+    self.homeView.isRetract = NO;
     [self.pendantManager movePendantView:self.homeView formBenchmarkType:WDBaseViewBenchmarkTypeLeftTop toBenchmarkType:WDBaseViewBenchmarkTypeRightTop];
 }
 
@@ -181,6 +182,7 @@
 }
 
 - (void)removeBtnDid {
+    self.homeView.isRetract = NO;
     [self.pendantManager removePendantView:self.homeView];
 
 }
