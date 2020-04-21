@@ -62,7 +62,7 @@
     return 10001;
 }
 - (CGFloat)pendantLevelWeight {
-    return 1;
+    return 2;
 }
 
 - (CGFloat)pendantVerticalWeight {
@@ -72,9 +72,11 @@
 - (CGFloat)pendantLevelMargin {
     return 10;
 }
+
 - (CGFloat)pendantVerticalMargin {
     return 10;
 }
+
 - (CGFloat)pendantWidth {
     return self.homeWidth;
 }

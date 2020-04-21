@@ -35,4 +35,43 @@
     [self layoutIfNeeded];
 }
 
+- (void)addPendantSubview:(UIView *)view {
+    [view addSubview:self];
+}
+
+- (void)updatePendantLayout:(CGPoint)point {
+
+    self.frame = CGRectMake(point.x, point.y, 80, 80);
+
+}
+
+
+- (WDBaseViewBenchmarkType)pendantBenchmarkType {
+    return WDBaseViewBenchmarkTypeLeftTop;
+}
+- (CGFloat)pendantID {
+    return 10001;
+}
+- (CGFloat)pendantLevelWeight {
+    return 1;
+}
+
+- (CGFloat)pendantVerticalWeight {
+    return 3;
+}
+
+- (CGFloat)pendantLevelMargin {
+    return 10;
+}
+- (CGFloat)pendantVerticalMargin {
+    return 10;
+}
+- (CGFloat)pendantWidth {
+    return 80;
+}
+- (CGFloat)pendantHeight {
+    return 80;
+}
+
+
 @end

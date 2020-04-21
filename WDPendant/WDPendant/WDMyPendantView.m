@@ -52,11 +52,11 @@
 }
 
 - (CGFloat)pendantLevelWeight {
-    return 1;
+    return 3;
 }
 
 - (CGFloat)pendantVerticalWeight {
-    return 2;
+    return 1;
 }
 
 - (CGFloat)pendantLevelMargin {
