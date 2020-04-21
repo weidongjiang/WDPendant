@@ -27,6 +27,8 @@
 @implementation WDPendantManager
 
 
+
+
 - (void)addPendantView:(WDBaseView *)pendantView {
 
     WDBaseViewBenchmarkType pendantBenchmarkType = pendantView.pendantBenchmarkType;
@@ -81,7 +83,6 @@
                 }
                 // 删除View 和 临时数组
                 [self removeFromSuperviewAndPendantItemArray:self.leftTopPendantItemArray];
-
                 [self updateLayoutPendantViewArray:[self sortArray:self.leftTopPendantArray]];
                 break;
             }
@@ -128,7 +129,6 @@
         }
     }
 }
-
 
 - (void)updatePendantView:(WDBaseView *)pendantView {
 
@@ -199,6 +199,42 @@
         }
     }
 }
+
+- (void)movePendantView:(WDBaseView *)pendantView
+      formBenchmarkType:(WDBaseViewBenchmarkType)formBenchmarkType
+        toBenchmarkType:(WDBaseViewBenchmarkType)toBenchmarkType {
+
+    WDBaseView *leftTopHavePendantView = [self isHavePendantView:pendantView pendantItemArray:self.leftTopPendantItemArray formBenchmarkType:formBenchmarkType toBenchmarkType:toBenchmarkType];
+    WDBaseView *leftBottomHavePendantView = [self isHavePendantView:pendantView pendantItemArray:self.leftBottomPendantItemArray formBenchmarkType:formBenchmarkType toBenchmarkType:toBenchmarkType];
+    WDBaseView *rightTopHavePendantView = [self isHavePendantView:pendantView pendantItemArray:self.rightTopPendantItemArray formBenchmarkType:formBenchmarkType toBenchmarkType:toBenchmarkType];
+    WDBaseView *rightBottomHavePendantView = [self isHavePendantView:pendantView pendantItemArray:self.rightBottomPendantItemArray formBenchmarkType:formBenchmarkType toBenchmarkType:toBenchmarkType];
+
+    if (leftTopHavePendantView || leftBottomHavePendantView || rightTopHavePendantView || rightBottomHavePendantView) {
+// 存在
+    }else {
+// 不存在
+        [self addPendantView:pendantView];
+    }
+
+}
+
+- (WDBaseView *)isHavePendantView:(WDBaseView *)pendantView
+                 pendantItemArray:(NSMutableArray *)PendantItemArray
+                formBenchmarkType:(WDBaseViewBenchmarkType)formBenchmarkType
+                  toBenchmarkType:(WDBaseViewBenchmarkType)toBenchmarkType {
+    for (int i = 0; i < PendantItemArray.count; i++) {
+        WDBaseView *objcview = PendantItemArray[i];
+        if (objcview.pendantID == pendantView.pendantID) {
+            objcview.pendantBenchmarkType = formBenchmarkType;
+            [self removePendantView:objcview];
+            pendantView.pendantBenchmarkType = toBenchmarkType;
+            [self addPendantView:pendantView];
+            return objcview;
+        }
+    }
+    return nil;
+}
+
 
 - (BOOL)getPendantView:(WDBaseView *)pendantView {
 

@@ -19,5 +19,4 @@ typedef NS_ENUM(NSInteger,WDBaseViewBenchmarkType) {
 @protocol WDPendantLayoutProtocol <NSObject>
 
 
-
 @end

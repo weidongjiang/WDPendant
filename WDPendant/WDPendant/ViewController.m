@@ -169,7 +169,8 @@
 }
 
 - (void)_moveBtnDid {
-    [self.pendantManager removePendantView:self.homeView];
+    
+    [self.pendantManager movePendantView:self.homeView formBenchmarkType:WDBaseViewBenchmarkTypeLeftTop toBenchmarkType:WDBaseViewBenchmarkTypeRightTop];
 }
 
 - (void)updateBtnDid {
@@ -177,6 +178,11 @@
     self.homeView.pendantHeight = 100;
     self.homeView.pendantWidth = 100;
     [self.pendantManager updatePendantView:self.homeView];
+}
+
+- (void)removeBtnDid {
+    [self.pendantManager removePendantView:self.homeView];
+
 }
 
 - (WDPendantManager *)pendantManager {
