@@ -204,17 +204,14 @@
       formBenchmarkType:(WDBaseViewBenchmarkType)formBenchmarkType
         toBenchmarkType:(WDBaseViewBenchmarkType)toBenchmarkType {
 
-    WDBaseView *leftTopHavePendantView = [self isHavePendantView:pendantView pendantItemArray:self.leftTopPendantItemArray formBenchmarkType:formBenchmarkType toBenchmarkType:toBenchmarkType];
-    WDBaseView *leftBottomHavePendantView = [self isHavePendantView:pendantView pendantItemArray:self.leftBottomPendantItemArray formBenchmarkType:formBenchmarkType toBenchmarkType:toBenchmarkType];
-    WDBaseView *rightTopHavePendantView = [self isHavePendantView:pendantView pendantItemArray:self.rightTopPendantItemArray formBenchmarkType:formBenchmarkType toBenchmarkType:toBenchmarkType];
-    WDBaseView *rightBottomHavePendantView = [self isHavePendantView:pendantView pendantItemArray:self.rightBottomPendantItemArray formBenchmarkType:formBenchmarkType toBenchmarkType:toBenchmarkType];
+    [self isHavePendantView:pendantView pendantItemArray:self.leftTopPendantItemArray formBenchmarkType:formBenchmarkType toBenchmarkType:toBenchmarkType];
+    [self isHavePendantView:pendantView pendantItemArray:self.leftBottomPendantItemArray formBenchmarkType:formBenchmarkType toBenchmarkType:toBenchmarkType];
+    [self isHavePendantView:pendantView pendantItemArray:self.rightTopPendantItemArray formBenchmarkType:formBenchmarkType toBenchmarkType:toBenchmarkType];
+    [self isHavePendantView:pendantView pendantItemArray:self.rightBottomPendantItemArray formBenchmarkType:formBenchmarkType toBenchmarkType:toBenchmarkType];
 
-    if (leftTopHavePendantView || leftBottomHavePendantView || rightTopHavePendantView || rightBottomHavePendantView) {
-// 存在
-    }else {
-// 不存在
-        [self addPendantView:pendantView];
-    }
+
+    pendantView.pendantBenchmarkType = toBenchmarkType;
+    [self addPendantView:pendantView];
 
 }
 
@@ -224,12 +221,9 @@
                   toBenchmarkType:(WDBaseViewBenchmarkType)toBenchmarkType {
     for (int i = 0; i < PendantItemArray.count; i++) {
         WDBaseView *objcview = PendantItemArray[i];
-        if (objcview.pendantID == pendantView.pendantID) {
-            objcview.pendantBenchmarkType = formBenchmarkType;
+        if (objcview.pendantID == pendantView.pendantID && formBenchmarkType == objcview.pendantBenchmarkType) {
             [self removePendantView:objcview];
-            pendantView.pendantBenchmarkType = toBenchmarkType;
-            [self addPendantView:pendantView];
-            return objcview;
+            return pendantView;
         }
     }
     return nil;
@@ -264,9 +258,10 @@
 
 - (void)removeFromSuperviewAndPendantItemArray:(NSMutableArray *)pendantItemArray {
     @synchronized (pendantItemArray) {
-        for (WDBaseView *p_view in pendantItemArray) {
+        for (__strong WDBaseView *p_view in pendantItemArray) {
             if (p_view) {
                 [p_view removeFromSuperview];
+                p_view = nil;
             }
         }
         [pendantItemArray removeAllObjects];
@@ -343,7 +338,8 @@
             [self.leftTopPendantItemArray addObject:objView];
             point.x = x;
             point.y = y;
-            [objView mas_makeConstraints:^(MASConstraintMaker *make) {
+
+            [objView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(objView.superview).offset(x);
                 make.top.equalTo(objView.superview).offset(y);
                 make.width.mas_equalTo(width);
@@ -353,7 +349,7 @@
             [self.rightTopPendantItemArray addObject:objView];
             point.x = -x;
             point.y = y;
-            [objView mas_makeConstraints:^(MASConstraintMaker *make) {
+            [objView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(objView.superview).offset(x);
                 make.top.equalTo(objView.superview).offset(y);
                 make.width.mas_equalTo(width);
@@ -363,7 +359,7 @@
             [self.rightBottomPendantItemArray addObject:objView];
             point.x = -x;
             point.y = -y;
-            [objView mas_makeConstraints:^(MASConstraintMaker *make) {
+            [objView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(objView.superview).offset(x);
                 make.bottom.equalTo(objView.superview).offset(y);
                 make.width.mas_equalTo(width);
@@ -373,7 +369,7 @@
             [self.leftBottomPendantItemArray addObject:objView];
             point.x = x;
             point.y = -y;
-            [objView mas_makeConstraints:^(MASConstraintMaker *make) {
+            [objView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(objView.superview).offset(x);
                 make.bottom.equalTo(objView.superview).offset(y);
                 make.width.mas_equalTo(width);
