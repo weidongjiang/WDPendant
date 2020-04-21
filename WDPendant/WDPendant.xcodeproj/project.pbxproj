@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		34278F74AA7CD2E73863716B /* libPods-WDPendant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A8AAA23218BAE1ABFBB2D9 /* libPods-WDPendant.a */; };
 		C809A38A3956D6726286C1B4 /* libPods-WDPendantTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E8EF0AD96C18581EAA0310 /* libPods-WDPendantTests.a */; };
+		CE66E142244EC443009A45EF /* WDHomePendantView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE66E141244EC443009A45EF /* WDHomePendantView.m */; };
+		CE66E145244EC456009A45EF /* WDMyPendantView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE66E144244EC456009A45EF /* WDMyPendantView.m */; };
+		CE66E148244EC46C009A45EF /* WDMsgPendantView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE66E147244EC46C009A45EF /* WDMsgPendantView.m */; };
+		CE66E14B244EC47E009A45EF /* WDNearPendantView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE66E14A244EC47E009A45EF /* WDNearPendantView.m */; };
+		CE66E14E244EC76D009A45EF /* WDPendantManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE66E14D244EC76D009A45EF /* WDPendantManager.m */; };
 		CE9605C824497CE6004A3596 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9605C724497CE6004A3596 /* AppDelegate.m */; };
 		CE9605CB24497CE6004A3596 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9605CA24497CE6004A3596 /* SceneDelegate.m */; };
 		CE9605CE24497CE6004A3596 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9605CD24497CE6004A3596 /* ViewController.m */; };
@@ -49,6 +54,16 @@
 		B3691CA46136A975B159EE56 /* Pods-WDPendantUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDPendantUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WDPendantUITests/Pods-WDPendantUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3A8AAA23218BAE1ABFBB2D9 /* libPods-WDPendant.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WDPendant.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85D17EB7247630D63F1FBFB /* Pods-WDPendant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDPendant.release.xcconfig"; path = "Pods/Target Support Files/Pods-WDPendant/Pods-WDPendant.release.xcconfig"; sourceTree = "<group>"; };
+		CE66E140244EC443009A45EF /* WDHomePendantView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDHomePendantView.h; sourceTree = "<group>"; };
+		CE66E141244EC443009A45EF /* WDHomePendantView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDHomePendantView.m; sourceTree = "<group>"; };
+		CE66E143244EC456009A45EF /* WDMyPendantView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDMyPendantView.h; sourceTree = "<group>"; };
+		CE66E144244EC456009A45EF /* WDMyPendantView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDMyPendantView.m; sourceTree = "<group>"; };
+		CE66E146244EC46C009A45EF /* WDMsgPendantView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDMsgPendantView.h; sourceTree = "<group>"; };
+		CE66E147244EC46C009A45EF /* WDMsgPendantView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDMsgPendantView.m; sourceTree = "<group>"; };
+		CE66E149244EC47E009A45EF /* WDNearPendantView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDNearPendantView.h; sourceTree = "<group>"; };
+		CE66E14A244EC47E009A45EF /* WDNearPendantView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDNearPendantView.m; sourceTree = "<group>"; };
+		CE66E14C244EC76D009A45EF /* WDPendantManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDPendantManager.h; sourceTree = "<group>"; };
+		CE66E14D244EC76D009A45EF /* WDPendantManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDPendantManager.m; sourceTree = "<group>"; };
 		CE9605C324497CE6004A3596 /* WDPendant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDPendant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9605C624497CE6004A3596 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CE9605C724497CE6004A3596 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -160,6 +175,16 @@
 				CE9605CF24497CE6004A3596 /* Main.storyboard */,
 				CE9605FB24498112004A3596 /* WDBaseView.h */,
 				CE9605FC24498112004A3596 /* WDBaseView.m */,
+				CE66E140244EC443009A45EF /* WDHomePendantView.h */,
+				CE66E141244EC443009A45EF /* WDHomePendantView.m */,
+				CE66E143244EC456009A45EF /* WDMyPendantView.h */,
+				CE66E144244EC456009A45EF /* WDMyPendantView.m */,
+				CE66E146244EC46C009A45EF /* WDMsgPendantView.h */,
+				CE66E147244EC46C009A45EF /* WDMsgPendantView.m */,
+				CE66E149244EC47E009A45EF /* WDNearPendantView.h */,
+				CE66E14A244EC47E009A45EF /* WDNearPendantView.m */,
+				CE66E14C244EC76D009A45EF /* WDPendantManager.h */,
+				CE66E14D244EC76D009A45EF /* WDPendantManager.m */,
 				CE9605FE24498422004A3596 /* WDGroupView.h */,
 				CE9605FF24498422004A3596 /* WDGroupView.m */,
 				CEE7205B244DB4D00077DA62 /* WDPendantLayoutProtocol.h */,
@@ -391,11 +416,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE66E14E244EC76D009A45EF /* WDPendantManager.m in Sources */,
+				CE66E148244EC46C009A45EF /* WDMsgPendantView.m in Sources */,
 				CE9605CE24497CE6004A3596 /* ViewController.m in Sources */,
+				CE66E14B244EC47E009A45EF /* WDNearPendantView.m in Sources */,
 				CE9605C824497CE6004A3596 /* AppDelegate.m in Sources */,
+				CE66E145244EC456009A45EF /* WDMyPendantView.m in Sources */,
 				CE9605D924497CEA004A3596 /* main.m in Sources */,
 				CE9605FD24498112004A3596 /* WDBaseView.m in Sources */,
 				CE9605CB24497CE6004A3596 /* SceneDelegate.m in Sources */,
+				CE66E142244EC443009A45EF /* WDHomePendantView.m in Sources */,
 				CE96060024498422004A3596 /* WDGroupView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

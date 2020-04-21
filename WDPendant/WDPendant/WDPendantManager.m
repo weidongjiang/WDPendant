@@ -1,15 +1,15 @@
 //
-//  WDGroupView.m
+//  WDPendantManager.m
 //  WDPendant
 //
-//  Created by yixiajwd on 2020/4/17.
+//  Created by yixiajwd on 2020/4/21.
 //  Copyright © 2020 yixiajwd. All rights reserved.
 //
 
-#import "WDGroupView.h"
+#import "WDPendantManager.h"
 #import "Masonry.h"
 
-@interface WDGroupView ()
+@interface WDPendantManager ()
 
 @property (nonatomic, strong) NSMutableArray<WDBaseView *>         *leftTopPendantArray; ///< <#value#>
 @property (nonatomic, strong) NSMutableArray<WDBaseView *>         *rightBottomPendantArray; ///< <#value#>
@@ -21,62 +21,49 @@
 @end
 
 
-@implementation WDGroupView
+@implementation WDPendantManager
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        [self setupView];
+
+- (void)addPendantView:(WDBaseView *)pendantView {
+
+    if ([pendantView pendantBenchmarkType] == WDBaseViewBenchmarkTypeLeftTop) {
+        @synchronized (self.leftTopPendantArray) {
+            [self.leftTopPendantArray addObject:pendantView];
+        }
+
+        // 删除View 和 临时数组
+        [self removeFromSuperviewAndPendantItemArray:self.leftTopPendantItemArray];
+
+        [self updateLayoutPendantViewArray:[self sortArray:self.leftTopPendantArray]];
+
+    }else if ([pendantView pendantBenchmarkType] == WDBaseViewBenchmarkTypeRightTop) {
+        @synchronized (self.rightTopPendantArray) {
+            [self.rightTopPendantArray addObject:pendantView];
+        }
+
+        // 删除View 和 临时数组
+        [self removeFromSuperviewAndPendantItemArray:self.rightTopPendantItemArray];
+
+        [self updateLayoutPendantViewArray:[self sortArray:self.rightTopPendantArray]];
+
+    }else if ([pendantView pendantBenchmarkType] == WDBaseViewBenchmarkTypeRightBottom) {
+        @synchronized (self.rightBottomPendantArray) {
+            [self.rightBottomPendantArray addObject:pendantView];
+        }
+
+        // 删除View 和 临时数组
+        [self removeFromSuperviewAndPendantItemArray:self.rightBottomPendantItemArray];
+        [self updateLayoutPendantViewArray:[self sortArray:self.rightBottomPendantArray]];
+
+//        [self.rightBottomPendantItemArray enumerateObjectsUsingBlock:^(WDBaseView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            NSAssert(![@(obj.pendantViewID).stringValue isEqualToString:@(pendantView.pendantViewID).stringValue], @"跟别人的ID 重了(%f %f)....换个吧 ",obj.pendantViewID,pendantView.pendantViewID);
+//        }];
     }
-    return self;
 }
 
-- (void)setupView {
+//- (void)checkPendantViewID:(NSMutableArray *)pendantItemArray
 
-    // 布局
-
-}
-//
-//- (void)addPendantView:(WDBaseView *)pendantView {
-//
-//    if (pendantView.benchmarkType == WDBaseViewBenchmarkTypeLeftTop) {
-//        @synchronized (self.leftTopPendantArray) {
-//            [self.leftTopPendantArray addObject:pendantView];
-//        }
-//
-//        // 删除View 和 临时数组
-//        [self removeFromSuperviewAndPendantItemArray:self.leftTopPendantItemArray];
-//
-//        [self updateLayoutPendantViewArray:[self sortArray:self.leftTopPendantArray]];
-//
-//    }else if (pendantView.benchmarkType == WDBaseViewBenchmarkTypeRightTop) {
-//        @synchronized (self.rightTopPendantArray) {
-//            [self.rightTopPendantArray addObject:pendantView];
-//        }
-//
-//        // 删除View 和 临时数组
-//        [self removeFromSuperviewAndPendantItemArray:self.rightTopPendantItemArray];
-//
-//        [self updateLayoutPendantViewArray:[self sortArray:self.rightTopPendantArray]];
-//
-//    }else if (pendantView.benchmarkType == WDBaseViewBenchmarkTypeRightBottom) {
-//        @synchronized (self.rightBottomPendantArray) {
-//            [self.rightBottomPendantArray addObject:pendantView];
-//        }
-//
-//        // 删除View 和 临时数组
-//        [self removeFromSuperviewAndPendantItemArray:self.rightBottomPendantItemArray];
-//        [self updateLayoutPendantViewArray:[self sortArray:self.rightBottomPendantArray]];
-//
-////        [self.rightBottomPendantItemArray enumerateObjectsUsingBlock:^(WDBaseView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-////            NSAssert(![@(obj.pendantViewID).stringValue isEqualToString:@(pendantView.pendantViewID).stringValue], @"跟别人的ID 重了(%f %f)....换个吧 ",obj.pendantViewID,pendantView.pendantViewID);
-////        }];
-//    }
-//}
-//
-////- (void)checkPendantViewID:(NSMutableArray *)pendantItemArray
-//
-//- (void)removePendantView:(WDBaseView *)pendantView {
+- (void)removePendantView:(WDBaseView *)pendantView {
 //    if (pendantView.benchmarkType == WDBaseViewBenchmarkTypeLeftTop) {
 //        for (WDBaseView *objcview in self.leftTopPendantArray) {
 //            if (objcview.pendantViewID == pendantView.pendantViewID && objcview.benchmarkType == pendantView.benchmarkType) {
@@ -118,11 +105,11 @@
 //            }
 //        }
 //    }
-//}
-//
-//
-//- (void)updatePendantView:(WDBaseView *)pendantView {
-//
+}
+
+
+- (void)updatePendantView:(WDBaseView *)pendantView {
+
 //    if (pendantView.benchmarkType == WDBaseViewBenchmarkTypeLeftTop) {
 //        for (int i = 0; i < self.leftTopPendantArray.count; i++) {
 //            WDBaseView *objcview = self.leftTopPendantArray[i];
@@ -173,35 +160,35 @@
 //            }
 //        }
 //    }
-//
-//}
-//
-//- (BOOL)getPendantView:(WDBaseView *)pendantView {
-//
+
+}
+
+- (BOOL)getPendantView:(WDBaseView *)pendantView {
+
 //    for (int i = 0; i < self.subviews.count; i++) {
 //        WDBaseView *objcview = self.subviews[i];
 //        if (objcview.pendantViewID == pendantView.pendantViewID && objcview.benchmarkType == pendantView.benchmarkType) {
 //            return YES;
 //        }
 //    }
-//    return NO;
-//}
-//
-//
-//- (void)removeFromSuperviewAndPendantItemArray:(NSMutableArray *)pendantItemArray {
-//    @synchronized (pendantItemArray) {
-//        for (WDBaseView *p_view in pendantItemArray) {
-//            if (p_view) {
-//                [p_view removeFromSuperview];
-//            }
-//        }
-//        [pendantItemArray removeAllObjects];
-//    }
-//}
-//
-//
-//- (void)addPendantViewArray:(NSMutableArray<WDBaseView *> *)pendantViewArray {
-//
+    return NO;
+}
+
+
+- (void)removeFromSuperviewAndPendantItemArray:(NSMutableArray *)pendantItemArray {
+    @synchronized (pendantItemArray) {
+        for (WDBaseView *p_view in pendantItemArray) {
+            if (p_view) {
+                [p_view removeFromSuperview];
+            }
+        }
+        [pendantItemArray removeAllObjects];
+    }
+}
+
+
+- (void)addPendantViewArray:(NSMutableArray<WDBaseView *> *)pendantViewArray {
+
 //    if (!pendantViewArray.count) {
 //        return;
 //    }
@@ -226,106 +213,107 @@
 //    [self updateLayoutPendantViewArray:[self sortArray:self.leftTopPendantArray]];
 //    [self updateLayoutPendantViewArray:[self sortArray:self.rightTopPendantArray]];
 //    [self updateLayoutPendantViewArray:[self sortArray:self.rightBottomPendantArray]];
-//
-//}
-//
-//
-//- (void)updateLayoutPendantViewArray:(NSArray *)pendantViewArray {
-//
-//    CGFloat x = 0;
-//    CGFloat y = 0;
-//    CGFloat verticalWeight = 1;
-//    CGFloat upHeight = 0;
-//    NSInteger lineMum = 0;
-//
-//    for (int i = 0; i < pendantViewArray.count; i++) {
-//
-//        WDBaseView *objView = pendantViewArray[i];
+
+}
+
+
+- (void)updateLayoutPendantViewArray:(NSArray *)pendantViewArray {
+
+    CGFloat x = 0;
+    CGFloat y = 0;
+    CGFloat verticalWeight = 1;
+    CGFloat upHeight = 0;
+    NSInteger lineMum = 0;
+
+    for (int i = 0; i < pendantViewArray.count; i++) {
+
+        WDBaseView *objView = pendantViewArray[i];
 //        [self addSubview:objView];
-//
-//        CGFloat width = objView.width;
-//        CGFloat height = objView.height;
-//        CGFloat levelMager = objView.levelMager;
-//        CGFloat verticalMager = objView.verticalMager;
-//        CGFloat _verticalWeight = objView.verticalWeight;
-//        WDBaseViewBenchmarkType type = objView.benchmarkType;
-//
-//        if (_verticalWeight > verticalWeight) { // 控制行号 到下一行
-//            y = y + verticalMager + upHeight;
-//            verticalWeight = _verticalWeight;
-//            x = 0;
-//            lineMum = 1;
-//        }else if (_verticalWeight == verticalWeight) {
-//            lineMum++;
-//        }
-//
-//        if (type == WDBaseViewBenchmarkTypeLeftTop) {
-//            [self.leftTopPendantItemArray addObject:objView];
-//
-//            [objView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.left.equalTo(self).offset(x);
-//                make.top.equalTo(self).offset(y);
-//                make.width.mas_equalTo(width);
-//                make.height.mas_equalTo(height);
-//            }];
-//        }else if (type == WDBaseViewBenchmarkTypeRightTop) {
-//            [self.rightTopPendantItemArray addObject:objView];
-//
-//            [objView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.right.equalTo(self).offset(-x);
-//                make.top.equalTo(self).offset(y);
-//                make.width.mas_equalTo(width);
-//                make.height.mas_equalTo(height);
-//            }];
-//        }else if (type == WDBaseViewBenchmarkTypeRightBottom) {
-//            [self.rightBottomPendantItemArray addObject:objView];
-//
-//            [objView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.right.equalTo(self).offset(-x);
-//                make.bottom.equalTo(self).offset(-y);
-//                make.width.mas_equalTo(width);
-//                make.height.mas_equalTo(height);
-//            }];
-//        }
-//
-//        if (lineMum > 1) {// 更新y方向的高度,有两个以上
-//            if (height > upHeight) {
-//                upHeight = height;
-//            }
-//        }else {// 每一行只有一个View
-//            upHeight = height;
-//        }
-//
-//        if (_verticalWeight == verticalWeight) {// 同一行
-//            x = x + levelMager + width;
-//        }
-//    }
-//
-//    [self setNeedsUpdateConstraints];
-//    [self updateConstraintsIfNeeded];
-//    [self layoutIfNeeded];
-//
-//}
-//
-//- (NSArray *)sortArray:(NSArray *)array {
-//
-//    NSArray *sorArray = [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-//        return [self comparePendantView:obj1 pendantObj2:obj2];
-//    }];
-//    return sorArray;
-//
-//}
-//
-//- (NSComparisonResult)comparePendantView:(WDBaseView *)pendantObj1 pendantObj2:(WDBaseView *)pendantObj2 {
-//
-//    // 竖直方向的确定是哪一行
-//    NSComparisonResult result = [[NSNumber numberWithInt:pendantObj1.verticalWeight] compare:[NSNumber numberWithInt:pendantObj2.verticalWeight]];
-//    //如果是同一行，确定每一行的顺序]
-//     if (result == NSOrderedSame) {
-//         result = [[NSNumber numberWithInt:pendantObj1.levelWeight] compare:[NSNumber numberWithInt:pendantObj2.levelWeight]];
-//     }
-//     return result;
-//}
+        if (!objView.superview) {
+            [objView addPendantSubview:objView.pendantSuperView];
+        }
+
+        CGFloat width = [objView pendantWidth];
+        CGFloat height = [objView pendantHeight];
+        CGFloat levelMager = [objView pendantLevelMargin];
+        CGFloat verticalMager = [objView pendantVerticalMargin];
+        CGFloat _verticalWeight = [objView pendantLevelWeight];
+        WDBaseViewBenchmarkType type = [objView pendantBenchmarkType];
+
+
+
+        if (_verticalWeight > verticalWeight) { // 控制行号 到下一行
+            y = y + verticalMager + upHeight;
+            verticalWeight = _verticalWeight;
+            x = 0;
+            lineMum = 1;
+        }else if (_verticalWeight == verticalWeight) {
+            lineMum++;
+        }
+
+        CGPoint point = CGPointMake(0, 0);
+
+        if (type == WDBaseViewBenchmarkTypeLeftTop) {
+            [self.leftTopPendantItemArray addObject:objView];
+
+            point.x = x;
+            point.y = y;
+
+        }else if (type == WDBaseViewBenchmarkTypeRightTop) {
+            [self.rightTopPendantItemArray addObject:objView];
+
+            point.x = -x;
+            point.y = y;
+
+        }else if (type == WDBaseViewBenchmarkTypeRightBottom) {
+            [self.rightBottomPendantItemArray addObject:objView];
+
+            point.x = -x;
+            point.y = -y;
+
+        }
+
+        [objView updatePendantLayout:point];
+
+        if (lineMum > 1) {// 更新y方向的高度,有两个以上
+            if (height > upHeight) {
+                upHeight = height;
+            }
+        }else {// 每一行只有一个View
+            upHeight = height;
+        }
+
+        if (_verticalWeight == verticalWeight) {// 同一行
+            x = x + levelMager + width;
+        }
+
+
+    }
+
+
+}
+
+- (NSArray *)sortArray:(NSArray *)array {
+
+    NSArray *sorArray = [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [self comparePendantView:obj1 pendantObj2:obj2];
+    }];
+    return sorArray;
+
+}
+
+- (NSComparisonResult)comparePendantView:(WDBaseView *)pendantObj1 pendantObj2:(WDBaseView *)pendantObj2 {
+
+    // 竖直方向的确定是哪一行
+
+    NSComparisonResult result = [[NSNumber numberWithInt:[pendantObj1 pendantVerticalWeight]] compare:[NSNumber numberWithInt:[pendantObj2 pendantVerticalWeight]]];
+    //如果是同一行，确定每一行的顺序]
+     if (result == NSOrderedSame) {
+
+         result = [[NSNumber numberWithInt:[pendantObj1 pendantLevelWeight]] compare:[NSNumber numberWithInt:[pendantObj2 pendantLevelWeight]]];
+     }
+     return result;
+}
 
 - (NSMutableArray<WDBaseView *> *)leftTopPendantArray {
     if (!_leftTopPendantArray) {
@@ -369,4 +357,6 @@
     }
     return _rightTopPendantItemArray;
 }
+
+
 @end
