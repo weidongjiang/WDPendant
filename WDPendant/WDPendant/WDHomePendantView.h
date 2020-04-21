@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WDHomePendantView : WDBaseView<WDPendantLayoutProtocol>
 
+@property (nonatomic, assign) CGFloat         homeWidth; ///< <#value#>
+@property (nonatomic, assign) CGFloat         homeHeight; ///< <#value#>
+
+
 @end
 
 NS_ASSUME_NONNULL_END

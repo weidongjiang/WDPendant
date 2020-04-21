@@ -19,6 +19,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.homeWidth = 100;
+        self.homeHeight = 50;
         [self setupView];
     }
     return self;
@@ -47,16 +49,9 @@
 }
 
 - (void)updatePendantLayout:(CGPoint)point {
-    [self mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.superview).offset(point.x);
-        make.top.equalTo(self.superview).offset(point.y);
-        make.width.mas_offset(100);
-        make.height.mas_offset(50);
-    }];
+    
+    self.frame = CGRectMake(point.x, point.y, self.homeWidth, self.homeHeight);
 
-    [self.superview setNeedsUpdateConstraints];
-    [self.superview updateConstraintsIfNeeded];
-    [self.superview layoutIfNeeded];
 }
 
 
@@ -81,10 +76,10 @@
     return 10;
 }
 - (CGFloat)pendantWidth {
-    return 100;
+    return self.homeWidth;
 }
 - (CGFloat)pendantHeight {
-    return 50;
+    return self.homeHeight;
 }
 
 
