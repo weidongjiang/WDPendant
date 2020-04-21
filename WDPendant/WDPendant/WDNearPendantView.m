@@ -50,7 +50,7 @@
     return WDBaseViewBenchmarkTypeLeftTop;
 }
 - (CGFloat)pendantID {
-    return 10001;
+    return 10004;
 }
 - (CGFloat)pendantLevelWeight {
     return 1;
