@@ -21,27 +21,11 @@
     if (self) {
         self.homeWidth = 100;
         self.homeHeight = 50;
-        [self setupView];
+        // 布局
+        self.backgroundColor = [UIColor redColor];
+
     }
     return self;
-}
-
-- (void)setupView {
-
-    // 布局
-    self.backgroundColor = [UIColor redColor];
-
-    // 约束
-    [self setAllLayoutView];
-}
-
-- (void)setAllLayoutView {
-
-
-
-    [self setNeedsUpdateConstraints];
-    [self updateConstraintsIfNeeded];
-    [self layoutIfNeeded];
 }
 
 - (void)addPendantSubview:(UIView *)view {
@@ -84,6 +68,8 @@
     return self.homeHeight;
 }
 
-
+- (void)setTestlabelText:(NSString *)testlabelText {
+    [super setTestlabelText:testlabelText];
+}
 
 @end

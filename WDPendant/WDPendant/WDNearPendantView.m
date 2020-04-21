@@ -12,28 +12,11 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self setupView];
+        self.backgroundColor = [UIColor greenColor];
     }
     return self;
 }
 
-- (void)setupView {
-
-    // 布局
-    self.backgroundColor = [UIColor greenColor];
-
-    // 约束
-    [self setAllLayoutView];
-}
-
-- (void)setAllLayoutView {
-
-
-
-    [self setNeedsUpdateConstraints];
-    [self updateConstraintsIfNeeded];
-    [self layoutIfNeeded];
-}
 
 - (void)addPendantSubview:(UIView *)view {
     [view addSubview:self];
@@ -72,6 +55,8 @@
 - (CGFloat)pendantHeight {
     return 80;
 }
-
+- (void)setTestlabelText:(NSString *)testlabelText {
+    [super setTestlabelText:testlabelText];
+}
 
 @end
