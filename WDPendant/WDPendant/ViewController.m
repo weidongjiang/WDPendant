@@ -20,6 +20,7 @@
 
 @property (nonatomic, strong) WDGroupView        *groupView; ///< <#value#>
 @property (nonatomic, strong) WDPendantManager        *pendantManager; ///< <#value#>
+@property (nonatomic, strong) WDHomePendantView        *homeView; ///< <#value#>
 
 @end
 
@@ -129,6 +130,7 @@
     WDHomePendantView *homeView = [[WDHomePendantView alloc] init];
 //    self.pendantManager.layoutDelegate = homeView;
     homeView.pendantSuperView = oneView;
+    self.homeView = homeView;
     [oneView addSubview:homeView];
 
     [self.pendantManager addPendantView:homeView];
@@ -145,6 +147,10 @@
     [threeView addSubview:msgView];
     [self.pendantManager addPendantView:msgView];
 
+}
+
+- (void)_updateBtnDid {
+    [self.pendantManager removePendantView:self.homeView];
 }
 
 //- (void)_updateBtnDid {
