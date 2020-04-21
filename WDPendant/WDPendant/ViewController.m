@@ -18,6 +18,11 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) UIView        *oneView; ///< <#value#>
+@property (nonatomic, strong) UIView        *twoView; ///< <#value#>
+@property (nonatomic, strong) UIView        *threeView; ///< <#value#>
+
+
 @property (nonatomic, strong) WDGroupView        *groupView; ///< <#value#>
 @property (nonatomic, strong) WDPendantManager        *pendantManager; ///< <#value#>
 @property (nonatomic, strong) WDHomePendantView        *homeView; ///< <#value#>
@@ -97,6 +102,7 @@
 
 
     UIView *oneView =  [[UIView alloc] init];
+    self.oneView = oneView;
     [self.view addSubview:oneView];
     [oneView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(10);
@@ -105,9 +111,10 @@
         make.bottom.equalTo(self.view).offset(-100);
     }];
 
-    UIView *towView =  [[UIView alloc] init];
-    [self.view addSubview:towView];
-    [towView mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *twoView =  [[UIView alloc] init];
+    self.twoView = twoView;
+    [self.view addSubview:twoView];
+    [twoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(10);
         make.right.equalTo(self.view).offset(-10);
         make.top.equalTo(self.view).offset(100);
@@ -116,6 +123,7 @@
 
 
     UIView *threeView =  [[UIView alloc] init];
+    self.threeView = threeView;
     [self.view addSubview:threeView];
     [threeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(10);
@@ -136,8 +144,8 @@
 
     WDMyPendantView *myView = [[WDMyPendantView alloc] init];
     myView.testlabelText = @"myView";
-    myView.pendantSuperView = towView;
-    [towView addSubview:myView];
+    myView.pendantSuperView = twoView;
+    [twoView addSubview:myView];
     [self.pendantManager addPendantView:myView];
 
 
@@ -151,20 +159,12 @@
 
 - (void)addBtnDid {
 
-    UIView *threeView =  [[UIView alloc] init];
-    [self.view addSubview:threeView];
-    [threeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).offset(10);
-        make.right.equalTo(self.view).offset(-10);
-        make.top.equalTo(self.view).offset(100);
-        make.bottom.equalTo(self.view).offset(-100);
-    }];
-
     WDNearPendantView *nearView = [[WDNearPendantView alloc] init];
-    nearView.testlabelText = @"nearView";
+    [self.threeView addSubview:nearView];
 
-    nearView.pendantSuperView = threeView;
-    [threeView addSubview:nearView];
+    nearView.testlabelText = @"nearView";
+    nearView.pendantSuperView = self.threeView;
+    nearView.pendantBenchmarkType = WDBaseViewBenchmarkTypeLeftBottom;
     [self.pendantManager addPendantView:nearView];
 }
 

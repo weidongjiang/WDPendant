@@ -25,9 +25,11 @@
     return self;
 }
 
+- (void)willUpdatePendantLayout:(WDBaseView *)pendantView {
 
-- (void)updatePendantLayout:(CGPoint)point {
-    self.frame = CGRectMake(point.x, point.y, self.pendantWidth, self.pendantHeight);
+}
+
+- (void)didUpdatePendantLayout:(WDBaseView *)pendantView {
 
 }
 

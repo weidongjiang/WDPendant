@@ -7,6 +7,7 @@
 //
 
 #import "WDNearPendantView.h"
+#import "Masonry.h"
 
 @implementation WDNearPendantView
 - (instancetype)init {
@@ -30,9 +31,11 @@
     [view addSubview:self];
 }
 
-- (void)updatePendantLayout:(CGPoint)point {
+- (void)willUpdatePendantLayout:(WDBaseView *)pendantView {
 
-    self.frame = CGRectMake(point.x, point.y, self.pendantWidth, self.pendantHeight);
+}
+
+- (void)didUpdatePendantLayout:(WDBaseView *)pendantView {
 
 }
 

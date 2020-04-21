@@ -39,10 +39,12 @@
     [view addSubview:self];
 }
 
-- (void)updatePendantLayout:(CGPoint)point {
-    
-    self.frame = CGRectMake(point.x, point.y, self.pendantWidth, self.pendantHeight);
+- (void)willUpdatePendantLayout:(WDBaseView *)pendantView {
 
+}
+
+- (void)didUpdatePendantLayout:(WDBaseView *)pendantView {
+    
 }
 
 - (void)setTestlabelText:(NSString *)testlabelText {

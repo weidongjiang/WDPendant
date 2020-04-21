@@ -41,7 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
 //- (CGFloat)pendantHeight;///< view高度
 
 - (void)addPendantSubview:(UIView *)view;
-- (void)updatePendantLayout:(CGPoint)point;
+- (void)willUpdatePendantLayout:(WDBaseView *)pendantView;
+- (void)didUpdatePendantLayout:(WDBaseView *)pendantView;
 
 @end
 
