@@ -35,16 +35,14 @@
     return self;
 }
 
-- (void)addPendantSubview:(UIView *)view {
-    [view addSubview:self];
-}
 
 - (void)willUpdatePendantLayout:(WDBaseView *)pendantView {
+    NSLog(@"pendantView--will--%@",pendantView);
 
 }
 
 - (void)didUpdatePendantLayout:(WDBaseView *)pendantView {
-    
+    NSLog(@"pendantView--did--%@",pendantView);
 }
 
 - (void)setTestlabelText:(NSString *)testlabelText {

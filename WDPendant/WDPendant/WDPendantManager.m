@@ -330,8 +330,12 @@
 
         WDBaseView *objView = pendantViewArray[i];
 
+        if (objView.superview) {
+            objView.pendantSuperView = objView.superview;
+        }
         if (!objView.superview && objView.isRetract) {
-            [objView addPendantSubview:objView.pendantSuperView];
+            NSAssert(objView.pendantSuperView,@"没有找到父View");
+            [objView.pendantSuperView addSubview:objView];
         }
 
         [objView willUpdatePendantLayout:objView];
@@ -407,6 +411,8 @@
                 }];
             }
         }
+        [objView.superview layoutIfNeeded];
+        [objView layoutIfNeeded];
 
         [objView didUpdatePendantLayout:objView];
 

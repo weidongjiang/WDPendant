@@ -134,7 +134,7 @@
 
 
     WDHomePendantView *homeView = [[WDHomePendantView alloc] init];
-    homeView.pendantSuperView = oneView;
+//    homeView.pendantSuperView = oneView;
     homeView.testlabelText = @"homeView";
     self.homeView = homeView;
     [oneView addSubview:homeView];
@@ -144,14 +144,14 @@
 
     WDMyPendantView *myView = [[WDMyPendantView alloc] init];
     myView.testlabelText = @"myView";
-    myView.pendantSuperView = twoView;
+//    myView.pendantSuperView = twoView;
     [twoView addSubview:myView];
     [self.pendantManager addPendantView:myView];
 
 
     WDMsgPendantView *msgView = [[WDMsgPendantView alloc] init];
     msgView.testlabelText = @"msgView";
-    msgView.pendantSuperView = threeView;
+//    msgView.pendantSuperView = threeView;
     [threeView addSubview:msgView];
     [self.pendantManager addPendantView:msgView];
 
@@ -168,7 +168,7 @@
     [self.threeView addSubview:nearView];
 
     nearView.testlabelText = @"nearView";
-    nearView.pendantSuperView = self.threeView;
+//    nearView.pendantSuperView = self.threeView;
     nearView.pendantBenchmarkType = WDBaseViewBenchmarkTypeLeftTop;
     [self.pendantManager addPendantView:nearView];
 }
