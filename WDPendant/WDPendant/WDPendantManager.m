@@ -74,10 +74,11 @@
 - (void)removePendantView:(WDBaseView *)pendantView {
 
     WDBaseViewBenchmarkType pendantBenchmarkType = pendantView.pendantBenchmarkType;
+    CGFloat pendantView_pendantID = pendantView.pendantID;
 
     if (pendantBenchmarkType == WDBaseViewBenchmarkTypeLeftTop) {
         for (WDBaseView *objcview in self.leftTopPendantArray) {
-            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
+            if (objcview.pendantID == pendantView_pendantID && objcview.pendantBenchmarkType == pendantBenchmarkType) {
                 if (pendantView.isRetract) {
                     @synchronized (self.leftTopPendantArray) {
                         [self.leftTopPendantArray removeObject:objcview];
@@ -94,7 +95,7 @@
         }
     }else if (pendantBenchmarkType == WDBaseViewBenchmarkTypeRightTop) {
         for (WDBaseView *objcview in self.rightTopPendantArray) {
-            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
+            if (objcview.pendantID == pendantView_pendantID && objcview.pendantBenchmarkType == pendantBenchmarkType) {
                 if (pendantView.isRetract) {
                     @synchronized (self.rightTopPendantArray) {
                         [self.rightTopPendantArray removeObject:objcview];
@@ -113,7 +114,7 @@
     }else if (pendantBenchmarkType == WDBaseViewBenchmarkTypeRightBottom) {
 
         for (WDBaseView *objcview in self.rightBottomPendantArray) {
-            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
+            if (objcview.pendantID == pendantView_pendantID && objcview.pendantBenchmarkType == pendantBenchmarkType) {
                 if (pendantView.isRetract) {
                     @synchronized (self.rightBottomPendantArray) {
                         [self.rightBottomPendantArray removeObject:objcview];
@@ -131,7 +132,7 @@
         }
     }else if (pendantBenchmarkType == WDBaseViewBenchmarkTypeLeftBottom) {
         for (WDBaseView *objcview in self.leftBottomPendantArray) {
-            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
+            if (objcview.pendantID == pendantView_pendantID && objcview.pendantBenchmarkType == pendantBenchmarkType) {
                 if (pendantView.isRetract) {
                     @synchronized (self.leftBottomPendantArray) {
                         [self.leftBottomPendantArray removeObject:objcview];
@@ -153,12 +154,13 @@
 - (void)updatePendantView:(WDBaseView *)pendantView {
 
     WDBaseViewBenchmarkType pendantBenchmarkType = pendantView.pendantBenchmarkType;
+    CGFloat pendantView_pendantID = pendantView.pendantID;
 
     if (pendantBenchmarkType == WDBaseViewBenchmarkTypeLeftTop) {
         for (int i = 0; i < self.leftTopPendantArray.count; i++) {
             WDBaseView *objcview = self.leftTopPendantArray[i];
 
-            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
+            if (objcview.pendantID == pendantView_pendantID && objcview.pendantBenchmarkType == pendantBenchmarkType) {
                 @synchronized (self.leftTopPendantArray) {
                     [self.leftTopPendantArray replaceObjectAtIndex:i withObject:pendantView];
                 }
@@ -175,7 +177,7 @@
         for (int i = 0; i < self.rightTopPendantArray.count; i++) {
             WDBaseView *objcview = self.rightTopPendantArray[i];
 
-            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
+            if (objcview.pendantID == pendantView_pendantID && objcview.pendantBenchmarkType == pendantBenchmarkType) {
                 @synchronized (self.rightTopPendantArray) {
                     [self.rightTopPendantArray replaceObjectAtIndex:i withObject:pendantView];
                 }
@@ -192,7 +194,7 @@
         for (int i = 0; i < self.rightBottomPendantArray.count; i++) {
             WDBaseView *objcview = self.rightBottomPendantArray[i];
 
-            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
+            if (objcview.pendantID == pendantView_pendantID && objcview.pendantBenchmarkType == pendantBenchmarkType) {
                 @synchronized (self.rightBottomPendantArray) {
                     [self.rightBottomPendantArray replaceObjectAtIndex:i withObject:pendantView];
                 }
@@ -207,7 +209,7 @@
         for (int i = 0; i < self.leftBottomPendantArray.count; i++) {
             WDBaseView *objcview = self.leftBottomPendantArray[i];
 
-            if ([objcview pendantID] == [pendantView pendantID] && [objcview pendantBenchmarkType] == [pendantView pendantBenchmarkType]) {
+            if (objcview.pendantID == pendantView_pendantID && objcview.pendantBenchmarkType == pendantBenchmarkType) {
                 @synchronized (self.leftBottomPendantArray) {
                     [self.leftBottomPendantArray replaceObjectAtIndex:i withObject:pendantView];
                 }

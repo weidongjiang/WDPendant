@@ -134,24 +134,21 @@
 
 
     WDHomePendantView *homeView = [[WDHomePendantView alloc] init];
-//    homeView.pendantSuperView = oneView;
     homeView.testlabelText = @"homeView";
     self.homeView = homeView;
     [oneView addSubview:homeView];
-
     [self.pendantManager addPendantView:homeView];
 
 
     WDMyPendantView *myView = [[WDMyPendantView alloc] init];
     myView.testlabelText = @"myView";
-//    myView.pendantSuperView = twoView;
     [twoView addSubview:myView];
     [self.pendantManager addPendantView:myView];
 
 
     WDMsgPendantView *msgView = [[WDMsgPendantView alloc] init];
     msgView.testlabelText = @"msgView";
-//    msgView.pendantSuperView = threeView;
+
     [threeView addSubview:msgView];
     [self.pendantManager addPendantView:msgView];
 
@@ -168,14 +165,13 @@
     [self.threeView addSubview:nearView];
 
     nearView.testlabelText = @"nearView";
-//    nearView.pendantSuperView = self.threeView;
     nearView.pendantBenchmarkType = WDBaseViewBenchmarkTypeLeftTop;
     [self.pendantManager addPendantView:nearView];
 }
 
 - (void)_moveBtnDid {
 
-    self.homeView.isRetract = NO;
+//    self.homeView.isRetract = NO;
     [self.pendantManager movePendantView:self.homeView formBenchmarkType:WDBaseViewBenchmarkTypeLeftTop toBenchmarkType:WDBaseViewBenchmarkTypeRightTop];
 }
 
@@ -187,7 +183,7 @@
 }
 
 - (void)removeBtnDid {
-    self.homeView.isRetract = NO;
+//    self.homeView.isRetract = NO;
     [self.pendantManager removePendantView:self.homeView];
 
 }
