@@ -26,50 +26,29 @@
 
 @implementation WDPendantManager
 
-
-
-
 - (void)addPendantView:(WDBaseView *)pendantView {
 
     WDBaseViewBenchmarkType pendantBenchmarkType = pendantView.pendantBenchmarkType;
 
     if (pendantBenchmarkType == WDBaseViewBenchmarkTypeLeftTop) {
-        @synchronized (self.leftTopPendantArray) {
-            [self.leftTopPendantArray addObject:pendantView];
-        }
-
-        // 删除View 和 临时数组
-        [self removeFromSuperviewAndPendantItemArray:self.leftTopPendantItemArray];
-
-        [self updateLayoutPendantViewArray:[self sortArray:self.leftTopPendantArray]];
-
+        [self _addPendantView:pendantView pendantArray:self.leftTopPendantArray pendantItemArray:self.leftTopPendantItemArray];
     }else if (pendantBenchmarkType == WDBaseViewBenchmarkTypeRightTop) {
-        @synchronized (self.rightTopPendantArray) {
-            [self.rightTopPendantArray addObject:pendantView];
-        }
-
-        // 删除View 和 临时数组
-        [self removeFromSuperviewAndPendantItemArray:self.rightTopPendantItemArray];
-
-        [self updateLayoutPendantViewArray:[self sortArray:self.rightTopPendantArray]];
-
+        [self _addPendantView:pendantView pendantArray:self.rightTopPendantArray pendantItemArray:self.rightTopPendantItemArray];
     }else if (pendantBenchmarkType == WDBaseViewBenchmarkTypeRightBottom) {
-        @synchronized (self.rightBottomPendantArray) {
-            [self.rightBottomPendantArray addObject:pendantView];
-        }
-
-        // 删除View 和 临时数组
-        [self removeFromSuperviewAndPendantItemArray:self.rightBottomPendantItemArray];
-        [self updateLayoutPendantViewArray:[self sortArray:self.rightBottomPendantArray]];
-
+        [self _addPendantView:pendantView pendantArray:self.rightBottomPendantArray pendantItemArray:self.rightBottomPendantItemArray];
     }else if (pendantBenchmarkType == WDBaseViewBenchmarkTypeLeftBottom) {
-        @synchronized (self.leftBottomPendantArray) {
-            [self.leftBottomPendantArray addObject:pendantView];
-        }
-        [self removeFromSuperviewAndPendantItemArray:self.leftBottomPendantItemArray];
-        [self updateLayoutPendantViewArray:[self sortArray:self.leftBottomPendantArray]];
+        [self _addPendantView:pendantView pendantArray:self.leftBottomPendantArray pendantItemArray:self.leftBottomPendantItemArray];
     }
 }
+
+- (void)_addPendantView:(WDBaseView *)pendantView pendantArray:(NSMutableArray *)pendantArray pendantItemArray:(NSMutableArray *)pendantItemArray {
+    @synchronized (pendantArray) {
+        [pendantArray addObject:pendantView];
+    }
+    [self removeFromSuperviewAndPendantItemArray:pendantItemArray];
+    [self updateLayoutPendantViewArray:[self sortArray:pendantArray]];
+}
+
 
 - (void)removePendantView:(WDBaseView *)pendantView {
 
